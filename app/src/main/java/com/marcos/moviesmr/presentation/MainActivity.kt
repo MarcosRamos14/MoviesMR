@@ -1,7 +1,8 @@
-package com.marcos.moviesmr
+package com.marcos.moviesmr.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.marcos.moviesmr.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
