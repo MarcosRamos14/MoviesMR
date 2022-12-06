@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.marcos.moviesmr.R
 import com.marcos.moviesmr.databinding.ActivityMainBinding
 
@@ -22,8 +23,20 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_container) as NavHostFragment
 
         navController = navHostFragment.navController
+
+        binding.bottomNavMain.setupWithNavController(navController)
+
         appBarConfiguration = AppBarConfiguration(
-            setOf()
+            setOf(R.id.homeFragment, R.id.favoritesFragment, R.id.searchFragment)
         )
+
+        binding.toolbarApp.setupWithNavController(navController, appBarConfiguration)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val isTopLevelDestination = appBarConfiguration.topLevelDestinations.contains(destination.id)
+            if (!isTopLevelDestination) {
+                binding.toolbarApp.setNavigationIcon(R.drawable.ic_back)
+            }
+        }
     }
 }
