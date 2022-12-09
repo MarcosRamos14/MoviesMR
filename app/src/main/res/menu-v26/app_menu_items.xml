@@ -5,7 +5,6 @@
     <item
         android:id="@+id/graph_home"
         android:icon="@drawable/ic_home"
-        android:iconTint="@color/mrMediumGrey"
         android:title="@string/app_menu_home" />
     <item
         android:id="@+id/graph_favorites"
