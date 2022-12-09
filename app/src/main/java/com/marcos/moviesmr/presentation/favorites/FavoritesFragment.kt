@@ -10,8 +10,7 @@ import com.marcos.moviesmr.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
 
-    private var _binding: FragmentFavoritesBinding? = null
-    private val binding: FragmentFavoritesBinding get() = _binding!!
+    private lateinit var binding: FragmentFavoritesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +20,6 @@ class FavoritesFragment : Fragment() {
         container,
         false
     ).apply {
-        _binding = this
+        binding = this
     }.root
 }

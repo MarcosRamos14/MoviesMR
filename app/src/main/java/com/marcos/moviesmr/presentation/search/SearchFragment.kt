@@ -10,8 +10,7 @@ import com.marcos.moviesmr.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
-    private var _binding: FragmentSearchBinding? = null
-    private val binding: FragmentSearchBinding get() = _binding!!
+    private lateinit var binding: FragmentSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +20,6 @@ class SearchFragment : Fragment() {
         container,
         false
     ).apply {
-        _binding = this
+        binding = this
     }.root
 }

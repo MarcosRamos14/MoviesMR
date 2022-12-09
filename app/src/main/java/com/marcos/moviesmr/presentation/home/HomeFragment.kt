@@ -8,8 +8,7 @@ import com.marcos.moviesmr.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding: FragmentHomeBinding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +18,6 @@ class HomeFragment : Fragment() {
         container,
         false
     ).apply {
-        _binding = this
+        binding = this
     }.root
 }
