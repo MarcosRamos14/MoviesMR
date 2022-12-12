@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_movies_home"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="4dp">
+    android:layout_height="@dimen/height_card"
+    android:layout_margin="@dimen/constraints_eight"
+    app:cardCornerRadius="@dimen/constraints_four">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/image_movies"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/match_constraints"
             android:importantForAccessibility="no"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,11 +26,11 @@
 
         <TextView
             android:id="@+id/text_name"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="@dimen/constraints_twentyFour"
+            android:layout_marginTop="@dimen/constraints_twentyFour"
+            android:layout_marginEnd="@dimen/constraints_twelve"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/white"
@@ -41,11 +41,11 @@
 
         <TextView
             android:id="@+id/text_language"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="@dimen/constraints_twentyFour"
+            android:layout_marginTop="@dimen/constraints_six"
+            android:layout_marginEnd="@dimen/constraints_twelve"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/mrMediumGrey"

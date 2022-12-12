@@ -11,4 +11,13 @@
     <string name="favorites_screen_title">Favorites</string>
     <string name="search_screen_title">Search</string>
 
+    <!-- Screen Home -->
+    <string name="movie_list_title">POPULAR</string>
+
+    <!-- Screen Search -->
+    <string name="hello_screen_search">Hello screen search</string>
+
+    <!-- Screen Favorites -->
+    <string name="hello_screen_favorites">Hello screen favorites</string>
+
 </resources>
