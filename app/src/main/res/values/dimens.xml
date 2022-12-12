@@ -3,13 +3,13 @@
 
     <dimen name="match_constraints">0dp</dimen>
 
-    <dimen name="constraints_four">4dp</dimen>
-    <dimen name="constraints_six">6dp</dimen>
-    <dimen name="constraints_eight">8dp</dimen>
-    <dimen name="constraints_twelve">12dp</dimen>
-    <dimen name="constraints_twentyFour">24dp</dimen>
-    <dimen name="constraints_fortySix">46dp</dimen>
-    <dimen name="constraints_fiftySix">56dp</dimen>
+    <dimen name="four">4dp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="twentyFour">24dp</dimen>
+    <dimen name="fortySix">46dp</dimen>
+    <dimen name="fiftySix">56dp</dimen>
 
     <dimen name="height_card">140dp</dimen>
 
