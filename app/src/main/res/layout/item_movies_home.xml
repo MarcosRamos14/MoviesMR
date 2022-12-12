@@ -5,8 +5,8 @@
     android:id="@+id/card_movies_home"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_card"
-    android:layout_margin="@dimen/constraints_eight"
-    app:cardCornerRadius="@dimen/constraints_four">
+    android:layout_margin="@dimen/eight"
+    app:cardCornerRadius="@dimen/four">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,9 +28,9 @@
             android:id="@+id/text_name"
             android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/constraints_twentyFour"
-            android:layout_marginTop="@dimen/constraints_twentyFour"
-            android:layout_marginEnd="@dimen/constraints_twelve"
+            android:layout_marginStart="@dimen/twentyFour"
+            android:layout_marginTop="@dimen/twentyFour"
+            android:layout_marginEnd="@dimen/twelve"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/white"
@@ -43,9 +43,9 @@
             android:id="@+id/text_language"
             android:layout_width="@dimen/match_constraints"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/constraints_twentyFour"
-            android:layout_marginTop="@dimen/constraints_six"
-            android:layout_marginEnd="@dimen/constraints_twelve"
+            android:layout_marginStart="@dimen/twentyFour"
+            android:layout_marginTop="@dimen/six"
+            android:layout_marginEnd="@dimen/twelve"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/mrMediumGrey"
