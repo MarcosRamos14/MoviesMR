@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_movies"
             app:layout_constraintTop_toBottomOf="@+id/text_name"
-            tools:text="Film's name" />
+            tools:text="Movie language" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
