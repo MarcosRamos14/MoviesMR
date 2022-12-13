@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mrDarkGrey">
+        android:background="@color/mrMediumGrey">
 
         <ImageView
             android:id="@+id/image_movies"
@@ -48,7 +48,7 @@
             android:layout_marginEnd="@dimen/_12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/mrMediumGrey"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_movies"
             app:layout_constraintTop_toBottomOf="@+id/text_name"
