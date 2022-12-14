@@ -17,7 +17,7 @@ class HomeViewHolder(
     private val imageMovies = itemMoviesHomeBinding.imageMovies
 
     fun bind(movies: Movies) {
-        textName.text = movies.name
+        textName.text = movies.title
         textLanguage.text = movies.language
         Glide.with(itemView)
             .load(movies.imageUrl)
