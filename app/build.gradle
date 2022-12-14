@@ -26,7 +26,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY']
-        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/movie/popular"'
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/movie/"'
     }
 
     buildTypes {

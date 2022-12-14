@@ -1,7 +1,7 @@
 package com.marcos.moviesmr.core.domain
 
-data class Movies(
+data class Popular(
     val title: String,
-    val language: String,
+    val year: String,
     val imageUrl: String
 )

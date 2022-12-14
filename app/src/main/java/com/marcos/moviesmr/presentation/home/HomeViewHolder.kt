@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.marcos.moviesmr.R
-import com.marcos.moviesmr.core.domain.Movies
+import com.marcos.moviesmr.core.domain.Popular
 import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
 
 class HomeViewHolder(
@@ -16,9 +16,9 @@ class HomeViewHolder(
     private val textLanguage = itemMoviesHomeBinding.textLanguage
     private val imageMovies = itemMoviesHomeBinding.imageMovies
 
-    fun bind(movies: Movies) {
+    fun bind(movies: Popular) {
         textName.text = movies.title
-        textLanguage.text = movies.language
+        textLanguage.text = movies.year
         Glide.with(itemView)
             .load(movies.imageUrl)
             .fallback(R.drawable.ic_img_loading_error)
