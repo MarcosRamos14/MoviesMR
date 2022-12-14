@@ -21,7 +21,7 @@ class HomeAdapter : ListAdapter<Movies, HomeViewHolder>(diffCallback) {
                 oldItem: Movies,
                 newItem: Movies
             ): Boolean {
-                return oldItem.name == newItem.name
+                return oldItem.title == newItem.title
             }
 
             override fun areContentsTheSame(
