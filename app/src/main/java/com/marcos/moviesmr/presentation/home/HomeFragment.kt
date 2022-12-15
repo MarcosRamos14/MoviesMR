@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-
     private val homeAdapter: HomeAdapter by lazy { HomeAdapter() }
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +35,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initHomeAdapter()
 
-        homeAdapter.submitList(
-            listOf(
-                Popular("Velozes e Furiosos", "2001","https://img.elo7.com.br/product/zoom/268DCC4/big-poster-velozes-e-furiosos-lo06-tamanho-90x60-cm-velozes-e-furiosos.jpg"),
-                Popular("The Simpson", "2007", "https://br.web.img2.acsta.net/medias/nmedia/18/92/12/47/20181896.jpg"),
-                Popular("Até o Último Homem", "2016", "https://br.web.img3.acsta.net/pictures/16/11/21/15/29/457312.jpg"),
-                Popular("Forrest Gump", "1994", "https://upload.wikimedia.org/wikipedia/pt/c/c0/ForrestGumpPoster.jpg"),
-                Popular("Spider Man", "2021", "https://m.media-amazon.com/images/I/91THlJb4lvL.jpg")
-            )
-        )
+        lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.popularPagingData("").collect { pagingData ->
+                    homeAdapter.submitData(pagingData)
+                }
+            }
+        }
     }
 
     private fun initHomeAdapter() {
