@@ -7,8 +7,7 @@ import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.framework.network.response.toMoviesModel
 
 class PopularPagingSource(
-    private val remoteDataSource: PopularRemoteDataSource,
-    private val query: String
+    private val remoteDataSource: PopularRemoteDataSource
 ): PagingSource<Int, Popular>() {
 
     @Suppress("TooGenericExceptionCaught")
@@ -19,10 +18,6 @@ class PopularPagingSource(
             val queries = hashMapOf(
                 "page" to page.toString()
             )
-
-            if (query.isNotEmpty()) {
-                queries["page"] = query
-            }
 
             val response = remoteDataSource.fetchPopular(queries)
 
