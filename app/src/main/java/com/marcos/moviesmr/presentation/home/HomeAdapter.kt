@@ -3,7 +3,7 @@ package com.marcos.moviesmr.presentation.home
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.marcos.moviesmr.core.domain.Popular
+import com.marcos.moviesmr.core.domain.model.Popular
 
 class HomeAdapter : ListAdapter<Popular, HomeViewHolder>(diffCallback) {
 

@@ -89,6 +89,13 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
+    // Paging3
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-common:$paging_version"
+
+    // Javax Inject
+    implementation "javax.inject:javax.inject:1"
+
     // Unit test
     testImplementation 'junit:junit:4.13.2'
 
