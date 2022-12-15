@@ -11,9 +11,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding

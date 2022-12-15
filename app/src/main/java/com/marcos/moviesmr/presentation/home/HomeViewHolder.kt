@@ -20,7 +20,7 @@ class HomeViewHolder(
         textName.text = movies.title
         textLanguage.text = movies.year
         Glide.with(itemView)
-            .load(movies.imageUrl)
+            .load("https://image.tmdb.org/t/p/w500" + movies.imageUrl)
             .fallback(R.drawable.ic_img_loading_error)
             .into(imageMovies)
     }

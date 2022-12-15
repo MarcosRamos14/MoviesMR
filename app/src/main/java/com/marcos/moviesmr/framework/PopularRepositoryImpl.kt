@@ -12,6 +12,6 @@ class PopularRepositoryImpl @Inject constructor(
 ): PopularRepository {
 
     override fun getPopular(query: String): PagingSource<Int, Popular> {
-        return PopularPagingSource(remoteDataSource, query)
+        return PopularPagingSource(remoteDataSource)
     }
 }

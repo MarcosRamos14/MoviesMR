@@ -1,4 +1,4 @@
-package com.marcos.moviesmr.framework
+package com.marcos.moviesmr.presentation
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
