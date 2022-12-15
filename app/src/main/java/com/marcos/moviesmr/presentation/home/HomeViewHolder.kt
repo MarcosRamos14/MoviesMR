@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.marcos.moviesmr.R
-import com.marcos.moviesmr.core.domain.Popular
+import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
 
 class HomeViewHolder(

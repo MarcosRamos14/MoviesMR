@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.marcos.moviesmr.core.domain.Popular
+import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

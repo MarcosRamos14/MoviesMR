@@ -1,7 +1,7 @@
 package com.marcos.moviesmr.framework.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.marcos.moviesmr.core.domain.Popular
+import com.marcos.moviesmr.core.domain.model.Popular
 
 data class PopularResponse(
     val id: String,
