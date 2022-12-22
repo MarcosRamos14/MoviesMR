@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_movies_home"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_140dp"
+    android:layout_height="@dimen/_100dp"
     android:layout_margin="@dimen/_8dp"
     app:cardCornerRadius="@dimen/_4dp">
 
@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/image_movies"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100dp"
             android:layout_height="@dimen/match_constraints"
             android:importantForAccessibility="no"
             android:scaleType="fitXY"
