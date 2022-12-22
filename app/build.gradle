@@ -27,6 +27,7 @@ android {
 
         buildConfigField "String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY']
         buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/movie/"'
+        buildConfigField "String", "BASE_URL_IMAGE", '"https://image.tmdb.org/t/p/w500"'
     }
 
     buildTypes {

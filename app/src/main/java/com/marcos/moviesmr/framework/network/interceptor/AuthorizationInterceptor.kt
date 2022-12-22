@@ -7,7 +7,7 @@ class AuthorizationInterceptor(
     private val publicKey: String
 ): Interceptor {
 
-    override fun intercept(chain: Interceptor.Chain): Response {
+    override fun intercept(chain: Interceptor.Chain) : Response {
         val request = chain.request()
         val requestUrl = request.url
         val newUrl = requestUrl.newBuilder()

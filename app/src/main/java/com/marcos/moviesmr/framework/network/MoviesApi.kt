@@ -7,8 +7,5 @@ import retrofit2.http.QueryMap
 interface MoviesApi {
 
     @GET("popular")
-    suspend fun getPopular(
-        @QueryMap
-        queries: Map<String, String>
-    ) : DataWrapperResponse
+    suspend fun getPopular(@QueryMap queries: Map<String, String>) : DataWrapperResponse
 }

@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetPopularUseCase @Inject constructor(
-    private val popularRepository: PopularRepository
-): PagingUseCase<GetPopularParams, Popular>() {
+    private val popularRepository : PopularRepository
+) : PagingUseCase<GetPopularParams, Popular>() {
 
-    override fun createFlowObservable(params: GetPopularParams): Flow<PagingData<Popular>> {
+    override fun createFlowObservable(params: GetPopularParams) : Flow<PagingData<Popular>> {
         return Pager(config = params.pagingConfig) {
             popularRepository.getPopular(params.query)
         }.flow

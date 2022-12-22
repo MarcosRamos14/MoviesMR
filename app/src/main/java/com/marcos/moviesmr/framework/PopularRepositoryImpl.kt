@@ -9,9 +9,9 @@ import javax.inject.Inject
 
 class PopularRepositoryImpl @Inject constructor(
     private val remoteDataSource: PopularRemoteDataSource
-): PopularRepository {
+) : PopularRepository {
 
-    override fun getPopular(query: String): PagingSource<Int, Popular> {
+    override fun getPopular(query: String) : PagingSource<Int, Popular> {
         return PopularPagingSource(remoteDataSource)
     }
 }
