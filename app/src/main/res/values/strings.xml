@@ -5,6 +5,10 @@
     <string name="app_menu_home">Home</string>
     <string name="app_menu_favorites">Favorites</string>
     <string name="app_menu_search">Search</string>
+    <string name="app_name_movies">Name Movies</string>
+    <string name="app_language_movies">Language movies </string>
+    <string name="app_like_movies">  Like movies </string>
+    <string name="app_popularity_movies">  Popularity movies </string>
 
     <!-- Label Graph -->
     <string name="home_screen_title">Home</string>
@@ -19,5 +23,6 @@
 
     <!-- Screen Favorites -->
     <string name="hello_screen_favorites">Hello screen favorites</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
