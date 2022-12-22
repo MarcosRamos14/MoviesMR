@@ -1,21 +1,20 @@
-package com.marcos.moviesmr.presentation.home
+package com.marcos.moviesmr.presentation.detail
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 
-class HomeAdapter(
+class DetailAdapter(
     private val imageLoader: ImageLoader
-) : PagingDataAdapter<Popular, HomeViewHolder>(diffCallback) {
+) : PagingDataAdapter<Popular, DetailViewHolder>(diffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : HomeViewHolder {
-        return HomeViewHolder.create(parent, imageLoader)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
+        return DetailViewHolder.create(parent, imageLoader)
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
