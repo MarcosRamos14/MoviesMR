@@ -9,5 +9,25 @@
         android:id="@+id/homeFragment"
         android:name="com.marcos.moviesmr.presentation.home.HomeFragment"
         android:label="@string/home_screen_title"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.marcos.moviesmr.presentation.detail.DetailFragment"
+        android:label="{screenTitle}"
+        tools:layout="@layout/fragment_detail" >
+
+        <argument
+            android:name="screenTitle"
+            app:argType="string" />
+
+        <argument
+            android:name="detailViewArgs"
+            app:argType="com.marcos.moviesmr.presentation.detail.DetailViewArgs" />
+
+    </fragment>
 </navigation>
