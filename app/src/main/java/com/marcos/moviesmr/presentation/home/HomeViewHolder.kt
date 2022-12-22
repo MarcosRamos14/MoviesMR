@@ -7,10 +7,12 @@ import com.bumptech.glide.Glide
 import com.marcos.moviesmr.R
 import com.marcos.moviesmr.core.domain.model.Popular
 import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
+import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 
 class HomeViewHolder(
-    itemMoviesHomeBinding: ItemMoviesHomeBinding
-): RecyclerView.ViewHolder(itemMoviesHomeBinding.root) {
+    itemMoviesHomeBinding: ItemMoviesHomeBinding,
+    private val imageLoader: ImageLoader
+) : RecyclerView.ViewHolder(itemMoviesHomeBinding.root) {
 
     private val textName = itemMoviesHomeBinding.textName
     private val textLanguage = itemMoviesHomeBinding.textLanguage
@@ -19,17 +21,14 @@ class HomeViewHolder(
     fun bind(movies: Popular) {
         textName.text = movies.title
         textLanguage.text = movies.year
-        Glide.with(itemView)
-            .load("https://image.tmdb.org/t/p/w500" + movies.imageUrl)
-            .fallback(R.drawable.ic_img_loading_error)
-            .into(imageMovies)
+        imageLoader.load(imageMovies, movies.imageUrl, R.drawable.ic_img_loading_error)
     }
 
     companion object {
-        fun create(parent: ViewGroup): HomeViewHolder {
+        fun create(parent: ViewGroup, imageLoader: ImageLoader) : HomeViewHolder {
             val inflate = LayoutInflater.from(parent.context)
             val itemBinding = ItemMoviesHomeBinding.inflate(inflate, parent, false)
-            return HomeViewHolder(itemBinding)
+            return HomeViewHolder(itemBinding, imageLoader)
         }
     }
 }

@@ -5,11 +5,11 @@ import com.marcos.moviesmr.framework.network.MoviesApi
 import com.marcos.moviesmr.framework.network.response.DataWrapperResponse
 import javax.inject.Inject
 
-class RetrofitRemoteDataSource @Inject constructor(
+class PopularRemoteDataSourceImpl @Inject constructor(
     private val moviesApi: MoviesApi
-): PopularRemoteDataSource {
+) : PopularRemoteDataSource {
 
-    override suspend fun fetchPopular(queries: Map<String, String>): DataWrapperResponse {
+    override suspend fun fetchPopular(queries: Map<String, String>) : DataWrapperResponse {
         return moviesApi.getPopular(queries)
     }
 }

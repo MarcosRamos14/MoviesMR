@@ -4,18 +4,18 @@ import com.google.gson.annotations.SerializedName
 import com.marcos.moviesmr.core.domain.model.Popular
 
 data class PopularResponse(
-    val id: String,
-    val title: String,
+    val id: String?,
+    val title: String?,
     @SerializedName("release_date")
-    val year: String,
+    val year: String?,
     @SerializedName("poster_path")
-    val imageUrl: String
+    val imageUrl: String?
 )
 
-fun PopularResponse.toMoviesModel(): Popular {
+fun PopularResponse.toMoviesModel() : Popular {
     return Popular(
         title = this.title,
         year = this.year,
-        imageUrl = this.imageUrl.replace("http", "https")
+        imageUrl = this.imageUrl!!.replace("http", "https")
     )
 }

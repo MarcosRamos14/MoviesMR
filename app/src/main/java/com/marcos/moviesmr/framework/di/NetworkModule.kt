@@ -20,7 +20,7 @@ object NetworkModule {
     private const val TIMEOUT_SECONDS = 15L
 
     @Provides
-    fun provideLoggingInterceptor():HttpLoggingInterceptor {
+    fun provideLoggingInterceptor() : HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             setLevel(
                 if (BuildConfig.DEBUG) {
@@ -32,8 +32,8 @@ object NetworkModule {
 
     @Provides
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor,
-        authorizationInterceptor: AuthorizationInterceptor
+        loggingInterceptor : HttpLoggingInterceptor,
+        authorizationInterceptor : AuthorizationInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -44,21 +44,21 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideAuthorizationInterceptor():AuthorizationInterceptor {
+    fun provideAuthorizationInterceptor() : AuthorizationInterceptor {
         return AuthorizationInterceptor(
             publicKey = BuildConfig.PUBLIC_KEY
         )
     }
 
     @Provides
-    fun provideGsonConverterFactory(): GsonConverterFactory {
+    fun provideGsonConverterFactory() : GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 
     @Provides
     fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        converterFactory: GsonConverterFactory
+        okHttpClient : OkHttpClient,
+        converterFactory : GsonConverterFactory
     ): MoviesApi {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
