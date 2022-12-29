@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.marcos.moviesmr.core.domain.model.Popular
+import com.marcos.moviesmr.databinding.FragmentDetailBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 
 class DetailAdapter(
