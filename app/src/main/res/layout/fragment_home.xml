@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12dp"
+        android:layout_marginStart="@dimen/_16dp"
         android:text="@string/movie_list_title"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_46dp"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_8dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_movies_home" />
