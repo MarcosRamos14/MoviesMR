@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.marcos.moviesmr.R
 import com.marcos.moviesmr.core.domain.model.Popular
+import com.marcos.moviesmr.databinding.FragmentDetailBinding
 import com.marcos.moviesmr.databinding.ItemMoviesDetailBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 
@@ -24,7 +25,7 @@ class DetailViewHolder(
     }
 
     companion object {
-        fun create(parent: ViewGroup, imageLoader: ImageLoader) : DetailViewHolder {
+        fun create(parent: ViewGroup, imageLoader: ImageLoader,) : DetailViewHolder {
             val inflate = LayoutInflater.from(parent.context)
             val itemBinding = ItemMoviesDetailBinding.inflate(inflate, parent, false)
             return DetailViewHolder(itemBinding, imageLoader)

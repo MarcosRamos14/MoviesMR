@@ -9,15 +9,15 @@
     <TextView
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
-        android:text="@string/movie_list_title"
-        android:textStyle="bold"
-        android:textColor="@color/white"
         android:layout_marginStart="@dimen/_12dp"
+        android:text="@string/movie_list_title"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recycler_movies_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@color/black"/>
+        tools:textColor="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_movies_home"
