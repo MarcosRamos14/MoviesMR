@@ -21,7 +21,7 @@ class DetailViewHolder(
     fun bind(movies: Popular) {
         textName.text = movies.title
         textLanguage.text = movies.year
-        imageLoader.load(imageMovies, movies.imageUrl, R.drawable.ic_img_loading_error)
+        imageLoader.load(imageMovies, movies.imageUrl)
     }
 
     companion object {

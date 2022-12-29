@@ -42,7 +42,7 @@ class DetailFragment : Fragment() {
         val detailViewArg = args.detailViewArgs
         binding.imageMovies.run {
             transitionName = detailViewArg.title
-            imageLoader.load(this, detailViewArg.imageUrl, R.drawable.ic_img_loading_error)
+            imageLoader.load(this, detailViewArg.imageUrl)
         }
         setSharedElementTransitionOnEnter()
     }

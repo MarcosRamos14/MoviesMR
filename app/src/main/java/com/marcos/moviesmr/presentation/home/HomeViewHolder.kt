@@ -23,7 +23,7 @@ class HomeViewHolder(
         textName.text = popular.title
         textLanguage.text = popular.year
         imageMovies.transitionName = popular.title
-        imageLoader.load(imageMovies, popular.imageUrl, R.drawable.ic_img_loading_error)
+        imageLoader.load(imageMovies, popular.imageUrl)
 
         itemView.setOnClickListener {
             onItemClick.invoke(popular, imageMovies)
