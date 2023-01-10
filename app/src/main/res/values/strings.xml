@@ -7,8 +7,10 @@
     <string name="app_menu_search">Search</string>
     <string name="app_name_movies">Name Movies</string>
     <string name="app_language_movies">Language movies </string>
-    <string name="app_like_movies">  Like movies </string>
-    <string name="app_popularity_movies">  Popularity movies </string>
+    <string name="app_like_movies">Like movies </string>
+    <string name="app_popularity_movies">Popularity movies </string>
+    <string name="common_try_again">Try again</string>
+    <string name="common_no_results_found">No results found</string>
 
     <!-- Label Graph -->
     <string name="home_screen_title">Home</string>
@@ -25,8 +27,14 @@
     <string name="hello_screen_favorites">Hello screen favorites</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Screen Detail -->
+    <string name="popularity_counter"> Popular</string>
+    <string name="likes_counter"> Likes</string>
+
     <!-- Errors -->
     <string name="error_loading_title">Error loading title</string>
+    <string name="error_loading_data">Error when trying to load data</string>
+    <string name="error_loading_more_try_again">Error when trying to load the next page. Try again</string>
 
 
 </resources>

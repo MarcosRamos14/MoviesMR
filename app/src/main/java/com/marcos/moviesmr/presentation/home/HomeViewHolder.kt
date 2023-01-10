@@ -4,19 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.marcos.moviesmr.core.domain.model.Movie
-import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
+import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import com.marcos.moviesmr.utils.OnHomeItemClick
 
 class HomeViewHolder(
-    itemMoviesHomeBinding: ItemMoviesHomeBinding,
+    itemMoviesBinding: ItemMoviesBinding,
     private val imageLoader: ImageLoader,
     private val onItemClick: OnHomeItemClick
-) : RecyclerView.ViewHolder(itemMoviesHomeBinding.root) {
+) : RecyclerView.ViewHolder(itemMoviesBinding.root) {
 
-    private val textName = itemMoviesHomeBinding.textName
-    private val textYear = itemMoviesHomeBinding.textYear
-    private val imageMovies = itemMoviesHomeBinding.imageMovies
+    private val textName = itemMoviesBinding.textName
+    private val textYear = itemMoviesBinding.textYear
+    private val imageMovies = itemMoviesBinding.imageMovies
 
     fun bind(movie: Movie) {
         textName.text = movie.title
@@ -36,7 +36,7 @@ class HomeViewHolder(
             onItemClick: OnHomeItemClick
         ) : HomeViewHolder {
             val inflate = LayoutInflater.from(parent.context)
-            val itemBinding = ItemMoviesHomeBinding.inflate(inflate, parent, false)
+            val itemBinding = ItemMoviesBinding.inflate(inflate, parent, false)
             return HomeViewHolder(itemBinding, imageLoader, onItemClick)
         }
     }

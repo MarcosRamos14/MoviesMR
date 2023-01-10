@@ -49,17 +49,22 @@ class DetailFragment : Fragment() {
         setSharedElementTransitionOnEnter()
 
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-            when (uiState) {
-                DetailViewModel.UiState.Loading -> {
-                }
-                is DetailViewModel.UiState.Success -> binding.recyclerMoviesDetail.run {
-                    setHasFixedSize(true)
-                    adapter = DetailSimilarAdapter(uiState.similar, imageLoader)
+            binding.flipperDetail.displayedChild = when (uiState) {
+                DetailViewModel.UiState.Loading -> FLIPPER_CHILD_POSITION_LOADING
+                is DetailViewModel.UiState.Success -> {
+                    binding.recyclerMoviesDetail.run {
+                        setHasFixedSize(true)
+                        adapter = DetailSimilarAdapter(uiState.similar, imageLoader)
+                    }
+                    FLIPPER_CHILD_POSITION_DETAIL
                 }
                 DetailViewModel.UiState.Error -> {
+                    binding.includeErrorView.buttonRetry.setOnClickListener {
+                        viewModel.getSimilar(detailViewArg.popularId)
+                    }
+                    FLIPPER_CHILD_POSITION_ERROR
                 }
-                DetailViewModel.UiState.Empty -> {
-                }
+                DetailViewModel.UiState.Empty -> FLIPPER_CHILD_POSITION_EMPTY
             }
         }
 
@@ -71,5 +76,12 @@ class DetailFragment : Fragment() {
             .inflateTransition(android.R.transition.move).apply {
                 sharedElementEnterTransition = this
             }
+    }
+
+    companion object {
+        private const val FLIPPER_CHILD_POSITION_LOADING = 0
+        private const val FLIPPER_CHILD_POSITION_DETAIL = 1
+        private const val FLIPPER_CHILD_POSITION_ERROR = 2
+        private const val FLIPPER_CHILD_POSITION_EMPTY = 3
     }
 }
