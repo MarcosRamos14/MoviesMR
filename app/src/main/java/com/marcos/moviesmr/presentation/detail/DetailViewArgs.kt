@@ -7,7 +7,9 @@ import kotlinx.parcelize.Parcelize
 @Keep
 @Parcelize
 data class DetailViewArgs(
-    val popularId: Int?,
+    val popularId: Int,
     val title: String,
-    val imageUrl: String?
+    val imageUrl: String?,
+    val likes: Int?,
+    val popularity: Double?
 ) : Parcelable

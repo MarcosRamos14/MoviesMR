@@ -3,8 +3,7 @@ package com.marcos.moviesmr.presentation.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.marcos.moviesmr.R
-import com.marcos.moviesmr.core.domain.model.Popular
+import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import com.marcos.moviesmr.utils.OnHomeItemClick
@@ -16,17 +15,17 @@ class HomeViewHolder(
 ) : RecyclerView.ViewHolder(itemMoviesHomeBinding.root) {
 
     private val textName = itemMoviesHomeBinding.textName
-    private val textLanguage = itemMoviesHomeBinding.textLanguage
+    private val textYear = itemMoviesHomeBinding.textYear
     private val imageMovies = itemMoviesHomeBinding.imageMovies
 
-    fun bind(popular: Popular) {
-        textName.text = popular.title
-        textLanguage.text = popular.year
-        imageMovies.transitionName = popular.title
-        imageLoader.load(imageMovies, popular.imageUrl)
+    fun bind(movie: Movie) {
+        textName.text = movie.title
+        textYear.text = movie.year
+        imageMovies.transitionName = movie.title
+        imageLoader.load(imageMovies, movie.imageUrl)
 
         itemView.setOnClickListener {
-            onItemClick.invoke(popular, imageMovies)
+            onItemClick.invoke(movie, imageMovies)
         }
     }
 
