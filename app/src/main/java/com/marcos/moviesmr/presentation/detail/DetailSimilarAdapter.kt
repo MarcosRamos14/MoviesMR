@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.marcos.moviesmr.core.domain.model.Movie
-import com.marcos.moviesmr.databinding.ItemMoviesHomeBinding
+import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 
 class DetailSimilarAdapter(
@@ -23,13 +23,13 @@ class DetailSimilarAdapter(
     override fun getItemCount() = detailSimilarList.size
 
     class DetailSimilarViewHolder(
-        itemMoviesHomeBinding: ItemMoviesHomeBinding,
+        itemMoviesBinding: ItemMoviesBinding,
         private val imageLoader: ImageLoader
-    ) : RecyclerView.ViewHolder(itemMoviesHomeBinding.root) {
+    ) : RecyclerView.ViewHolder(itemMoviesBinding.root) {
 
-        private val textName = itemMoviesHomeBinding.textName
-        private val textYear = itemMoviesHomeBinding.textYear
-        private val imageMovies = itemMoviesHomeBinding.imageMovies
+        private val textName = itemMoviesBinding.textName
+        private val textYear = itemMoviesBinding.textYear
+        private val imageMovies = itemMoviesBinding.imageMovies
 
         fun bind(movie: Movie) {
             textName.text = movie.title
@@ -42,9 +42,9 @@ class DetailSimilarAdapter(
                 parent: ViewGroup,
                 imageLoader: ImageLoader
             ) : DetailSimilarViewHolder {
-                val itemMoviesHomeBinding = ItemMoviesHomeBinding
+                val itemMoviesBinding = ItemMoviesBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                return DetailSimilarViewHolder(itemMoviesHomeBinding, imageLoader)
+                return DetailSimilarViewHolder(itemMoviesBinding, imageLoader)
             }
         }
     }

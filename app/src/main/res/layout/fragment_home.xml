@@ -4,30 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mrDarkGrey"
     tools:context=".presentation.home.HomeFragment">
 
     <TextView
+        android:id="@+id/text_title_popular"
         android:layout_width="@dimen/match_constraints"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16dp"
         android:text="@string/movie_list_title"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_movies_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@color/black" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_movies_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_46dp"
-        android:layout_marginStart="@dimen/_8dp"
-        android:layout_marginEnd="@dimen/_8dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_movies_home" />
+    <ViewFlipper
+        android:id="@+id/flipper_home"
+        android:layout_width="@dimen/match_constraints"
+        android:layout_height="@dimen/match_constraints"
+        android:background="@color/mrDarkGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_popular">
+
+        <include
+            android:id="@+id/include_view_home_loading_state"
+            layout="@layout/include_view_loading_state" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_movies_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginEnd="@dimen/_8dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_movies" />
+
+        <include
+            android:id="@+id/include_view_home_error_state"
+            layout="@layout/include_error_view" />
+
+    </ViewFlipper>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
