@@ -5,6 +5,9 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -18,7 +21,6 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
     private val args by navArgs<DetailFragmentArgs>()
-
     private val viewModel: DetailViewModel by viewModels()
 
     @Inject
@@ -40,6 +42,7 @@ class DetailFragment : Fragment() {
 
         val detailViewArg = args.detailViewArgs
         binding.imageMovies.run {
+            transitionName = detailViewArg.title
             imageLoader.load(this, detailViewArg.imageUrl)
         }
         binding.textDetailTitle.text = detailViewArg.title
