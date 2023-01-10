@@ -3,14 +3,14 @@ package com.marcos.moviesmr.presentation.home
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.marcos.moviesmr.core.domain.model.Popular
+import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import com.marcos.moviesmr.utils.OnHomeItemClick
 
 class HomeAdapter(
     private val imageLoader: ImageLoader,
     private val onItemClick: OnHomeItemClick
-) : PagingDataAdapter<Popular, HomeViewHolder>(diffCallback) {
+) : PagingDataAdapter<Movie, HomeViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : HomeViewHolder {
         return HomeViewHolder.create(parent, imageLoader, onItemClick)
@@ -21,17 +21,17 @@ class HomeAdapter(
     }
 
     companion object {
-        private val diffCallback = object : DiffUtil.ItemCallback<Popular>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(
-                oldItem: Popular,
-                newItem: Popular
+                oldItem: Movie,
+                newItem: Movie
             ) : Boolean {
                 return oldItem.title == newItem.title
             }
 
             override fun areContentsTheSame(
-                oldItem: Popular,
-                newItem: Popular
+                oldItem: Movie,
+                newItem: Movie
             ) : Boolean {
                 return oldItem == newItem
             }

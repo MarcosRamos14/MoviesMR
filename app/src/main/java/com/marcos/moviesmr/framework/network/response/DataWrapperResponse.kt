@@ -1,7 +1,10 @@
 package com.marcos.moviesmr.framework.network.response
 
-data class DataWrapperResponse(
+import com.google.gson.annotations.SerializedName
+
+data class DataWrapperResponse<T>(
     val page: Int?,
+    @SerializedName("total_pages")
     val total: Int?,
-    val results: List<PopularResponse>?
+    val results: List<T>?
 )

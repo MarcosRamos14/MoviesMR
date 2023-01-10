@@ -66,9 +66,11 @@ class HomeFragment : Fragment() {
                 .actionHomeFragmentToDetailFragment(
                     popular.title ?: errorLoadingTitle,
                     DetailViewArgs(
-                        popularId = popular.id,
+                        popularId = popular.id ?: 0,
                         title = popular.title ?: errorLoadingTitle,
-                        imageUrl = popular.imageUrl
+                        imageUrl = popular.imageUrl,
+                        likes = popular.likes,
+                        popularity = popular.popularity
                     )
                 )
 
