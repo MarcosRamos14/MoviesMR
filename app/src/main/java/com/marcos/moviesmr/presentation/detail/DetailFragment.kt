@@ -36,7 +36,14 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initSetupView()
+        initSetupListener()
+        initSetupObservers()
+        setSharedElementTransitionOnEnter()
 
+    }
+
+    private fun initSetupView() {
         val detailViewArg = args.detailViewArgs
         binding.imageMovies.run {
             transitionName = detailViewArg.title
@@ -45,9 +52,17 @@ class DetailFragment : Fragment() {
         binding.textDetailTitle.text = detailViewArg.title
         binding.numberLikeDetail.text = detailViewArg.likes.toString()
         binding.popularityDetail.text = detailViewArg.popularity.toString()
+    }
 
-        setSharedElementTransitionOnEnter()
+    private fun initSetupListener() {
+        val detailViewArg = args.detailViewArgs
+        binding.includeErrorView.buttonRetry.setOnClickListener {
+            viewModel.getSimilar(detailViewArg.popularId)
+        }
+    }
 
+    private fun initSetupObservers() {
+        val detailViewArg = args.detailViewArgs
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.flipperDetail.displayedChild = when (uiState) {
                 DetailViewModel.UiState.Loading -> FLIPPER_CHILD_POSITION_LOADING
@@ -58,16 +73,10 @@ class DetailFragment : Fragment() {
                     }
                     FLIPPER_CHILD_POSITION_DETAIL
                 }
-                DetailViewModel.UiState.Error -> {
-                    binding.includeErrorView.buttonRetry.setOnClickListener {
-                        viewModel.getSimilar(detailViewArg.popularId)
-                    }
-                    FLIPPER_CHILD_POSITION_ERROR
-                }
+                DetailViewModel.UiState.Error -> FLIPPER_CHILD_POSITION_ERROR
                 DetailViewModel.UiState.Empty -> FLIPPER_CHILD_POSITION_EMPTY
             }
         }
-
         viewModel.getSimilar(detailViewArg.popularId)
     }
 
