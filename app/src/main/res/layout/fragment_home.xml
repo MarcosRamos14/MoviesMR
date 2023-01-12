@@ -17,7 +17,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ViewFlipper
         android:id="@+id/flipper_home"
@@ -33,21 +33,24 @@
             android:id="@+id/include_view_home_loading_state"
             layout="@layout/include_view_loading_state" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_movies_home"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_8dp"
-            android:layout_marginTop="@dimen/_8dp"
-            android:layout_marginEnd="@dimen/_8dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_movies" />
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_movies_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_movies" />
+        </FrameLayout>
 
         <include
             android:id="@+id/include_view_home_error_state"
             layout="@layout/include_error_view" />
 
     </ViewFlipper>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

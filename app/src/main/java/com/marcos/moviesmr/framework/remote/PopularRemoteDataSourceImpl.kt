@@ -3,7 +3,7 @@ package com.marcos.moviesmr.framework.remote
 import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.framework.network.MoviesApi
-import com.marcos.moviesmr.framework.network.response.DataWrapperResponse
+import com.marcos.moviesmr.framework.network.response.PagedDataWrapperResponse
 import com.marcos.moviesmr.framework.network.response.MovieResponse
 import com.marcos.moviesmr.framework.network.response.toMovieModel
 import javax.inject.Inject
@@ -14,7 +14,7 @@ class PopularRemoteDataSourceImpl @Inject constructor(
 
     override suspend fun fetchPopular(
         queries: Map<String, String>
-    ) : DataWrapperResponse<MovieResponse> {
+    ) : PagedDataWrapperResponse<MovieResponse> {
         return moviesApi.getPopular(queries)
     }
 
