@@ -6,7 +6,7 @@
     <string name="app_menu_favorites">Favorites</string>
     <string name="app_menu_search">Search</string>
     <string name="app_name_movies">Name Movies</string>
-    <string name="app_language_movies">Language movies </string>
+    <string name="app_year_movies">Year movies </string>
     <string name="app_like_movies">Like movies </string>
     <string name="app_popularity_movies">Popularity movies </string>
     <string name="common_try_again">Try again</string>

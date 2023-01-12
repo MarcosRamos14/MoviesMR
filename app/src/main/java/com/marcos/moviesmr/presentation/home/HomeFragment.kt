@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initHomeAdapter()
-        observeInitialLoadState()
+        observePagingState()
 
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -86,7 +86,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun observeInitialLoadState() {
+    private fun observePagingState() {
         lifecycleScope.launch {
             homeAdapter.loadStateFlow.collectLatest { loadState ->
                 binding.flipperHome.displayedChild = when (loadState.refresh) {

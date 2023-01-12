@@ -10,10 +10,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:background="@color/black_800"
-        android:paddingStart="@dimen/_16dp"
-        android:paddingEnd="@dimen/_16dp"
-        android:paddingTop="@dimen/_24dp"
-        android:paddingBottom="@dimen/_24dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingVertical="@dimen/_24dp"
         android:text="@string/error_loading_more_try_again"/>
 
     <ProgressBar
@@ -21,5 +19,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
-
 </FrameLayout>

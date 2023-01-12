@@ -53,12 +53,12 @@ android {
 dependencies {
 
     // AndroidX
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.core:core-ktx:$corektx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
 
     // Material design
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation "com.google.android.material:material:$material_version"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -73,7 +73,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // OkHttp
-    implementation (platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation (platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version"))
     implementation ("com.squareup.okhttp3:okhttp")
     implementation ("com.squareup.okhttp3:logging-interceptor")
 
@@ -91,7 +91,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // Gson
-    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation "com.google.code.gson:gson:$gson_version"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
@@ -104,12 +104,12 @@ dependencies {
     implementation "javax.inject:javax.inject:1"
 
     // Unit test
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation "junit:junit:$junit_version"
 
     // Instrumentation tests
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation "androidx.test.ext:junit:$extjunit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     // Other Libs
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
 }

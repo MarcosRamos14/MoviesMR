@@ -11,7 +11,7 @@
         android:id="@+id/image_movies"
         android:layout_width="@dimen/match_constraints"
         android:layout_height="@dimen/_270dp"
-        android:scaleType="fitXY"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +31,8 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12dp"
-        android:layout_marginTop="@dimen/_12dp"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:textColor="@color/white"
@@ -45,8 +45,8 @@
         android:id="@+id/number_like_detail"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_16dp"
-        android:layout_marginStart="@dimen/_12dp"
-        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sp"
         app:drawableStartCompat="@drawable/ic_like"
@@ -59,13 +59,13 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_16dp"
         android:layout_marginStart="@dimen/_24dp"
-        android:layout_marginTop="@dimen/_10dp"
-        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_8dp"
         android:textSize="@dimen/_12sp"
-        app:drawableStartCompat="@drawable/ic_star"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/number_like_detail"
         app:layout_constraintTop_toBottomOf="@id/text_detail_title"
-        tools:text="@string/app_popularity_movies" />
+        tools:text="@string/app_popularity_movies"
+        app:drawableStartCompat="@drawable/ic_star" />
 
     <ViewFlipper
         android:id="@+id/flipper_detail"
@@ -78,18 +78,23 @@
 
         <include layout="@layout/include_view_loading_state" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_movies_detail"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_12dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_like_detail"
-            tools:listitem="@layout/item_movies" />
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_movies_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_like_detail"
+                tools:listitem="@layout/item_movies" />
+        </FrameLayout>
 
         <include
             android:id="@+id/include_error_view"
@@ -108,7 +113,5 @@
             android:text="@string/common_no_results_found"
             android:textColor="@color/mrLightGrey"
             app:drawableTopCompat="@drawable/ic_neutral" />
-
     </ViewFlipper>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
