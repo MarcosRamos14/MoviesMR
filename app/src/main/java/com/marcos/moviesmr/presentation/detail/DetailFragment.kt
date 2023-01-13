@@ -19,6 +19,11 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val args by navArgs<DetailFragmentArgs>()
     private val viewModel: DetailViewModel by viewModels()
+    private val detailSimilarAdapter: DetailSimilarAdapter by lazy {
+        val adapter = DetailSimilarAdapter(imageLoader)
+        binding.recyclerMoviesDetail.adapter = adapter
+        return@lazy adapter
+    }
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -36,48 +41,45 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initSetupView()
-        initSetupListener()
+        val detailViewArgs = args.detailViewArgs
+
+        initSetupView(detailViewArgs)
+        initSetupListener(detailViewArgs)
         initSetupObservers()
         setSharedElementTransitionOnEnter()
 
+        viewModel.getSimilar(detailViewArgs.popularId)
     }
 
-    private fun initSetupView() {
-        val detailViewArg = args.detailViewArgs
+    private fun initSetupView(detailViewArgs: DetailViewArgs) {
         binding.imageMovies.run {
-            transitionName = detailViewArg.title
-            imageLoader.load(this, detailViewArg.imageUrl)
+            transitionName = detailViewArgs.title
+            imageLoader.load(this, detailViewArgs.imageUrl)
         }
-        binding.textDetailTitle.text = detailViewArg.title
-        binding.numberLikeDetail.text = detailViewArg.likes.toString()
-        binding.popularityDetail.text = detailViewArg.popularity.toString()
+        binding.textDetailTitle.text = detailViewArgs.title
+        binding.numberLikeDetail.text = detailViewArgs.likes.toString()
+        binding.popularityDetail.text = detailViewArgs.popularity.toString()
     }
 
-    private fun initSetupListener() {
-        val detailViewArg = args.detailViewArgs
+    private fun initSetupListener(detailViewArgs: DetailViewArgs) {
         binding.includeErrorView.buttonRetry.setOnClickListener {
-            viewModel.getSimilar(detailViewArg.popularId)
+            viewModel.getSimilar(detailViewArgs.popularId)
+
         }
     }
 
     private fun initSetupObservers() {
-        val detailViewArg = args.detailViewArgs
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.flipperDetail.displayedChild = when (uiState) {
                 DetailViewModel.UiState.Loading -> FLIPPER_CHILD_POSITION_LOADING
                 is DetailViewModel.UiState.Success -> {
-                    binding.recyclerMoviesDetail.run {
-                        setHasFixedSize(true)
-                        adapter = DetailSimilarAdapter(uiState.similar, imageLoader)
-                    }
+                    detailSimilarAdapter.submitList(uiState.similar)
                     FLIPPER_CHILD_POSITION_DETAIL
                 }
                 DetailViewModel.UiState.Error -> FLIPPER_CHILD_POSITION_ERROR
                 DetailViewModel.UiState.Empty -> FLIPPER_CHILD_POSITION_EMPTY
             }
         }
-        viewModel.getSimilar(detailViewArg.popularId)
     }
 
     private fun setSharedElementTransitionOnEnter() {

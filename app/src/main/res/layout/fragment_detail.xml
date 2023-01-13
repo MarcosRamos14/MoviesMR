@@ -16,7 +16,6 @@
             android:layout_height="wrap_content"
             android:background="@color/mrDarkGrey"
             app:contentScrim="@color/mrDarkGrey"
-
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <androidx.appcompat.widget.Toolbar
