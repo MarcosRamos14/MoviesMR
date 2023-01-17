@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.marcos.moviesmr.presentation.detail.DetailFragment"
-        android:label="{screenTitle}"
+        android:label=""
         tools:layout="@layout/fragment_detail" >
 
         <argument
