@@ -26,42 +26,13 @@ import javax.inject.Inject
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var homeAdapter: HomeAdapter
     private val viewModel: HomeViewModel by viewModels()
 
-    @Inject
-    lateinit var imageLoader: ImageLoader
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    )= FragmentHomeBinding.inflate(
-        inflater,
-        container,
-        false
-    ).apply {
-        binding = this
-    }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initHomeAdapter()
-        observePagingState()
-
-        lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.popularPagingData("").collect { pagingData ->
-                    homeAdapter.submitData(pagingData)
-                }
-            }
-        }
-    }
-
-    private fun initHomeAdapter() {
-        homeAdapter = HomeAdapter(imageLoader) { popular, view ->
+    private val homeAdapter: HomeAdapter by lazy {
+        val homeAdapter = HomeAdapter(imageLoader) { popular, view ->
             val errorLoadingTitle = getString(R.string.error_loading_title)
 
-            val extras = FragmentNavigatorExtras (
+            val extras = FragmentNavigatorExtras(
                 view to (popular.title ?: errorLoadingTitle)
             )
 
@@ -78,11 +49,37 @@ class HomeFragment : Fragment() {
                 )
             findNavController().navigate(directions, extras)
         }
-        with(binding.recyclerMoviesHome) {
-            setHasFixedSize(true)
-            adapter = homeAdapter.withLoadStateFooter(
-                footer = HomeLoadMoreStateAdapter(homeAdapter::retry)
-            )
+        binding.recyclerMoviesHome.adapter = homeAdapter.withLoadStateFooter(
+            footer = HomeLoadMoreStateAdapter(homeAdapter::retry)
+        )
+        return@lazy homeAdapter
+    }
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FragmentHomeBinding.inflate(
+        inflater,
+        container,
+        false
+    ).apply {
+        binding = this
+    }.root
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observePagingState()
+        setupListener()
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.popularPagingData("").collect { pagingData ->
+                    homeAdapter.submitData(pagingData)
+                }
+            }
         }
     }
 
@@ -100,13 +97,16 @@ class HomeFragment : Fragment() {
                     }
                     is LoadState.Error -> {
                         setShimmerVisibility(false)
-                        binding.includeViewHomeErrorState.buttonRetry.setOnClickListener {
-                            homeAdapter.retry()
-                        }
                         FLIPPER_CHILD_ERROR
                     }
                 }
             }
+        }
+    }
+
+    private fun setupListener() {
+        binding.includeViewHomeErrorState.buttonRetry.setOnClickListener {
+            homeAdapter.retry()
         }
     }
 

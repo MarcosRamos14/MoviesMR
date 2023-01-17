@@ -43,15 +43,14 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val detailViewArgs = args.detailViewArgs
 
-        initSetupView(detailViewArgs)
-        initSetupListener(detailViewArgs)
-        initSetupObservers()
+        setupView(detailViewArgs)
+        setupListener(detailViewArgs)
+        setupObservers()
         setSharedElementTransitionOnEnter()
-
         viewModel.getSimilar(detailViewArgs.popularId)
     }
 
-    private fun initSetupView(detailViewArgs: DetailViewArgs) {
+    private fun setupView(detailViewArgs: DetailViewArgs) {
         binding.imageMovies.run {
             transitionName = detailViewArgs.title
             imageLoader.load(this, detailViewArgs.imageUrl)
@@ -61,14 +60,13 @@ class DetailFragment : Fragment() {
         binding.popularityDetail.text = detailViewArgs.popularity.toString()
     }
 
-    private fun initSetupListener(detailViewArgs: DetailViewArgs) {
+    private fun setupListener(detailViewArgs: DetailViewArgs) {
         binding.includeErrorView.buttonRetry.setOnClickListener {
             viewModel.getSimilar(detailViewArgs.popularId)
-
         }
     }
 
-    private fun initSetupObservers() {
+    private fun setupObservers() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.flipperDetail.displayedChild = when (uiState) {
                 DetailViewModel.UiState.Loading -> FLIPPER_CHILD_POSITION_LOADING
