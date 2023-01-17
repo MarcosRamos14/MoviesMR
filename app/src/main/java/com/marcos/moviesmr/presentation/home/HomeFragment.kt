@@ -49,9 +49,6 @@ class HomeFragment : Fragment() {
                 )
             findNavController().navigate(directions, extras)
         }
-        binding.recyclerMoviesHome.adapter = homeAdapter.withLoadStateFooter(
-            footer = HomeLoadMoreStateAdapter(homeAdapter::retry)
-        )
         return@lazy homeAdapter
     }
 
@@ -71,6 +68,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initHomeAdapter()
         observePagingState()
         setupListener()
 
@@ -80,6 +78,14 @@ class HomeFragment : Fragment() {
                     homeAdapter.submitData(pagingData)
                 }
             }
+        }
+    }
+
+    private fun initHomeAdapter() {
+        with(binding.recyclerMoviesHome) {
+            adapter = homeAdapter.withLoadStateFooter(
+                footer = HomeLoadMoreStateAdapter(homeAdapter::retry)
+            )
         }
     }
 

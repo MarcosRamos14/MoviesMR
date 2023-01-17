@@ -9,9 +9,10 @@
 
     <TextView
         android:id="@+id/text_title_popular"
-        android:layout_width="@dimen/match_constraints"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginVertical="@dimen/_4dp"
         android:text="@string/movie_list_title"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -21,36 +22,31 @@
 
     <ViewFlipper
         android:id="@+id/flipper_home"
-        android:layout_width="@dimen/match_constraints"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/match_constraints"
         android:background="@color/mrDarkGrey"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginVertical="@dimen/_4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_title_popular">
 
         <include
             android:id="@+id/include_view_home_loading_state"
             layout="@layout/include_view_loading_state" />
 
-        <FrameLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_movies_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_movies_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_8dp"
-                android:layout_marginTop="@dimen/_8dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_movies" />
-        </FrameLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginVertical="@dimen/_4dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_movies" />
 
         <include
             android:id="@+id/include_view_home_error_state"
             layout="@layout/include_error_view" />
-
     </ViewFlipper>
 </androidx.constraintlayout.widget.ConstraintLayout>
