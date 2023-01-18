@@ -40,11 +40,12 @@ class HomeFragment : Fragment() {
                 .actionHomeFragmentToDetailFragment(
                     popular.title ?: errorLoadingTitle,
                     DetailViewArgs(
-                        popularId = popular.id ?: 0,
+                        movieId = popular.id ?: 0,
                         title = popular.title ?: errorLoadingTitle,
-                        imageUrl = popular.imageUrl,
-                        likes = popular.likes,
-                        popularity = popular.popularity
+                        year = popular.year ?: errorLoadingTitle,
+                        imageUrl = popular.imageUrl ?: errorLoadingTitle,
+                        likes = popular.likes ?: 0,
+                        popularity = popular.popularity ?: 0.0
                     )
                 )
             findNavController().navigate(directions, extras)

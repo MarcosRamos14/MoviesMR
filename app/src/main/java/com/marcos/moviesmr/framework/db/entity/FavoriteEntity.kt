@@ -10,17 +10,17 @@ import com.marcos.moviesmr.framework.db.DbConstants
 data class FavoriteEntity(
     @PrimaryKey
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_ID)
-    val id: Int,
+    val id: Int?,
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_TITLE)
-    val title: String,
+    val title: String?,
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_YEAR)
-    val year: String,
+    val year: String?,
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_IMAGE_URL)
-    val imageUrl: String,
+    val imageUrl: String?,
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_LIKES)
-    val likes: Int,
+    val likes: Int?,
     @ColumnInfo(name = DbConstants.FAVORITES_COLUMN_INFO_POPULARITY)
-    val popularity: Double
+    val popularity: Double?
 )
 
 fun List<FavoriteEntity>.toMovieModel() = map {

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.marcos.moviesmr.databinding.FragmentDetailBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
+import com.marcos.moviesmr.presentation.extensions.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -47,7 +48,8 @@ class DetailFragment : Fragment() {
         setupListener(detailViewArgs)
         setupObservers()
         setSharedElementTransitionOnEnter()
-        viewModel.getSimilar(detailViewArgs.popularId)
+        setAndObserveFavoriteUiState(detailViewArgs)
+        viewModel.getSimilar(detailViewArgs.movieId)
     }
 
     private fun setupView(detailViewArgs: DetailViewArgs) {
@@ -62,7 +64,13 @@ class DetailFragment : Fragment() {
 
     private fun setupListener(detailViewArgs: DetailViewArgs) {
         binding.includeErrorView.buttonRetry.setOnClickListener {
-            viewModel.getSimilar(detailViewArgs.popularId)
+            viewModel.getSimilar(detailViewArgs.movieId)
+        }
+
+        viewModel.favorite.run {
+            binding.imageFavoriteIcon.setOnClickListener {
+                update(detailViewArgs)
+            }
         }
     }
 
@@ -80,6 +88,26 @@ class DetailFragment : Fragment() {
         }
     }
 
+    private fun setAndObserveFavoriteUiState(detailViewArgs: DetailViewArgs) {
+        viewModel.favorite.run {
+            checkFavorite(detailViewArgs.movieId)
+
+            state.observe(viewLifecycleOwner) { uiState ->
+                binding.flipperFavorite.displayedChild = when (uiState) {
+                    FavoriteUiActionStateLiveData.UiState.Loading -> FLIPPER_FAVORITE_CHILD_POSITION_LOADING
+                    is FavoriteUiActionStateLiveData.UiState.Icon -> {
+                        binding.imageFavoriteIcon.setImageResource(uiState.icon)
+                        FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                    }
+                    is FavoriteUiActionStateLiveData.UiState.Error -> {
+                        showShortToast(uiState.messageResId)
+                        FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
+                    }
+                }
+            }
+        }
+    }
+
     private fun setSharedElementTransitionOnEnter() {
         TransitionInflater.from(requireContext())
             .inflateTransition(android.R.transition.move).apply {
@@ -92,5 +120,7 @@ class DetailFragment : Fragment() {
         private const val FLIPPER_CHILD_POSITION_DETAIL = 1
         private const val FLIPPER_CHILD_POSITION_ERROR = 2
         private const val FLIPPER_CHILD_POSITION_EMPTY = 3
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_IMAGE = 0
+        private const val FLIPPER_FAVORITE_CHILD_POSITION_LOADING = 1
     }
 }
