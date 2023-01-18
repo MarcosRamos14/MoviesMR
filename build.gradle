@@ -19,6 +19,7 @@ buildscript {
     ext.junit_version = "4.13.2"
     ext.extjunit_version = "1.1.4"
     ext.espresso_version = "3.5.0"
+    ext.room_version = "2.4.1"
     repositories {
         google()
         mavenCentral()
