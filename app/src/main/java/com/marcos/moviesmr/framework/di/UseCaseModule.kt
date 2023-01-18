@@ -6,6 +6,8 @@ import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCase
 import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCaseImpl
 import com.marcos.moviesmr.core.usecase.favorite.CheckFavoriteUseCase
 import com.marcos.moviesmr.core.usecase.favorite.CheckFavoriteUseCaseImpl
+import com.marcos.moviesmr.core.usecase.favorite.GetFavoriteUseCase
+import com.marcos.moviesmr.core.usecase.favorite.GetFavoriteUseCaseImpl
 import com.marcos.moviesmr.core.usecase.favorite.RemoveFavoriteUseCase
 import com.marcos.moviesmr.core.usecase.favorite.RemoveFavoriteUseCaseImpl
 import dagger.Binds
@@ -28,4 +30,7 @@ interface UseCaseModule {
 
     @Binds
     fun bindRemoveFavoriteUseCase(useCase: RemoveFavoriteUseCaseImpl) : RemoveFavoriteUseCase
+
+    @Binds
+    fun bindGetFavoriteUseCase(useCase: GetFavoriteUseCaseImpl) : GetFavoriteUseCase
 }
