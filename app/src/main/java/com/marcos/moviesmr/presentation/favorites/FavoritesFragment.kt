@@ -1,16 +1,29 @@
 package com.marcos.moviesmr.presentation.favorites
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.marcos.moviesmr.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.marcos.moviesmr.databinding.FragmentFavoritesBinding
+import com.marcos.moviesmr.framework.imageLoader.ImageLoader
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoritesBinding
+    private val viewModel: FavoritesViewModel by viewModels()
+    private val favoritesAdapter: FavoritesAdapter by lazy {
+        val adapter = FavoritesAdapter(imageLoader)
+        binding.recyclerFavorites.adapter = adapter
+        return@lazy adapter
+    }
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,4 +35,30 @@ class FavoritesFragment : Fragment() {
     ).apply {
         binding = this
     }.root
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.state.observe(viewLifecycleOwner) { uiState ->
+            binding.flipperScreenFavorite.displayedChild = when (uiState) {
+                is FavoritesViewModel.UiState.ShowFavorite -> {
+                    favoritesAdapter.submitList(uiState.favorites)
+                    FLIPPER_CHILD_MOVIES_FAVORITES
+                }
+                FavoritesViewModel.UiState.ShowEmpty -> {
+                    favoritesAdapter.submitList(emptyList())
+                    FLIPPER_CHILD_FAVORITES_EMPTY
+                }
+            }
+        }
+        viewModel.getAll()
+    }
+
+    companion object {
+        private const val FLIPPER_CHILD_MOVIES_FAVORITES = 0
+        private const val FLIPPER_CHILD_FAVORITES_EMPTY = 1
+    }
 }
