@@ -1,8 +1,12 @@
 package com.marcos.moviesmr.framework.di
 
+import com.marcos.moviesmr.core.data.repository.FavoriteLocalDataSource
+import com.marcos.moviesmr.core.data.repository.FavoriteRepository
 import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
 import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.framework.FavoriteRepositoryImpl
 import com.marcos.moviesmr.framework.PopularRepositoryImpl
+import com.marcos.moviesmr.framework.local.FavoriteLocalDataSourceImpl
 import com.marcos.moviesmr.framework.remote.PopularRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -18,4 +22,10 @@ interface RepositoryModule {
 
     @Binds
     fun bindPopularRemoteDataSource(dataSource: PopularRemoteDataSourceImpl) : PopularRemoteDataSource
+
+    @Binds
+    fun bindFavoriteRepository(repository: FavoriteRepositoryImpl) : FavoriteRepository
+
+    @Binds
+    fun bindFavoriteLocalDataSource(dataSource: FavoriteLocalDataSourceImpl) : FavoriteLocalDataSource
 }
