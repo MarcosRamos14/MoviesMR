@@ -93,6 +93,27 @@
                 app:layout_constraintStart_toEndOf="@id/number_like_detail"
                 app:layout_constraintTop_toTopOf="@id/number_like_detail"
                 tools:text="@string/app_popularity_movies" />
+
+            <ViewFlipper
+                android:id="@+id/flipper_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_detail_title">
+
+                <ImageView
+                    android:id="@+id/image_favorite_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    tools:srcCompat="@drawable/ic_favorite_checked"/>
+
+                <ProgressBar
+                    android:layout_width="@dimen/_24dp"
+                    android:layout_height="@dimen/_24dp"
+                    android:layout_gravity="center"/>
+            </ViewFlipper>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -110,8 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8dp"
-            android:paddingHorizontal="@dimen/_16dp"
             android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_movies" />
 
