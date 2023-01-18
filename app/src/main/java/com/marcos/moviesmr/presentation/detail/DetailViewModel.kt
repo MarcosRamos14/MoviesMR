@@ -7,12 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCase
 import com.marcos.moviesmr.core.usecase.base.CoroutinesDispatchers
-import com.marcos.moviesmr.core.usecase.base.ResultStatus
 import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCase
 import com.marcos.moviesmr.core.usecase.favorite.CheckFavoriteUseCase
 import com.marcos.moviesmr.core.usecase.favorite.RemoveFavoriteUseCase
+import com.marcos.moviesmr.presentation.extensions.watchStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,24 +35,18 @@ class DetailViewModel @Inject constructor(
     val uiState: LiveData<UiState> get() = _uiState
 
     fun getSimilar(movieId: Int) = viewModelScope.launch {
-        getSimilarUseCase(GetSimilarUseCase.GetSimilarParams(movieId))
-            .watchStatus()
-    }
-
-    private fun Flow<ResultStatus<List<Movie>>>.watchStatus() = viewModelScope.launch {
-        collect { status ->
-            _uiState.value = when (status) {
-                ResultStatus.Loading -> UiState.Loading
-                is ResultStatus.Success -> {
-                    val similar = status.data
-
-                    if (similar.isNotEmpty()) {
-                        UiState.Success(similar)
-                    } else UiState.Empty
+        getSimilarUseCase.invoke(GetSimilarUseCase.GetSimilarParams(movieId))
+            .watchStatus(
+                loading = {
+                    _uiState.value = UiState.Loading
+                },
+                success = { similar ->
+                    _uiState.value = UiState.Success(similar)
+                },
+                error = {
+                    _uiState.value = UiState.Error
                 }
-                is ResultStatus.Error -> UiState.Error
-            }
-        }
+            )
     }
 
     sealed class UiState {

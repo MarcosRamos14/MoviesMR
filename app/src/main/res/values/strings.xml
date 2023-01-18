@@ -26,6 +26,7 @@
     <!-- Screen Favorites -->
     <string name="hello_screen_favorites">Hello screen favorites</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorites_screen">Favorites</string>
     <string name="favorites_no_favorites_in_the_list">No movies in the favorite list</string>
 
     <!-- Screen Detail -->
