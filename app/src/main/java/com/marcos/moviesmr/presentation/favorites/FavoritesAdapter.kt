@@ -54,14 +54,14 @@ class FavoritesAdapter(
             override fun areItemsTheSame(
                 oldItem: Movie,
                 newItem: Movie
-            ): Boolean {
+            ) : Boolean {
                 return oldItem.title == newItem.title
             }
 
             override fun areContentsTheSame(
                 oldItem: Movie,
                 newItem: Movie
-            ): Boolean {
+            ) : Boolean {
                 return oldItem == newItem
             }
         }

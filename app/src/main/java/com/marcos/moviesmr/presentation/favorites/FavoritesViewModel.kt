@@ -25,25 +25,23 @@ class FavoritesViewModel @Inject constructor(
                 is Action.GetAll -> {
                     getFavoriteUseCase.invoke().catch {
                         emit(UiState.ShowEmpty)
-                    }
-                        .collect {
-                            val items = it.map { movies ->
-                                Movie(
-                                    movies.id,
-                                    movies.title,
-                                    movies.year,
-                                    movies.imageUrl,
-                                    movies.likes,
-                                    movies.popularity
-                                )
-                            }
-
-                            val uiState = if (items.isEmpty()) {
-                                UiState.ShowEmpty
-                            } else UiState.ShowFavorite(items)
-
-                            emit(uiState)
+                    }.collect {
+                        val items = it.map { movies ->
+                            Movie(
+                                movies.id,
+                                movies.title,
+                                movies.year,
+                                movies.imageUrl,
+                                movies.likes,
+                                movies.popularity
+                            )
                         }
+
+                        val uiState = if (items.isEmpty()) {
+                            UiState.ShowEmpty
+                        } else UiState.ShowFavorite(items)
+                        emit(uiState)
+                    }
                 }
             }
         }

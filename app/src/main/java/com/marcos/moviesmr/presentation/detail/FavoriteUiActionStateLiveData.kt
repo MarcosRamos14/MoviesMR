@@ -39,7 +39,6 @@ class FavoriteUiActionStateLiveData(
                             }
                             emitFavoriteIcon()
                         },
-                        error = {}
                     )
                 }
                 is Action.AddFavorite -> {
