@@ -38,7 +38,8 @@ class RemoveFavoriteUseCaseImpl @Inject constructor(
                     params.year,
                     params.imageUrl,
                     params.likes,
-                    params.popularity)
+                    params.popularity
+                )
             )
             ResultStatus.Success(Unit)
         }

@@ -67,10 +67,8 @@ class DetailFragment : Fragment() {
             viewModel.getSimilar(detailViewArgs.movieId)
         }
 
-        viewModel.favorite.run {
-            binding.imageFavoriteIcon.setOnClickListener {
-                update(detailViewArgs)
-            }
+        binding.imageFavoriteIcon.setOnClickListener {
+            viewModel.favorite.update(detailViewArgs)
         }
     }
 

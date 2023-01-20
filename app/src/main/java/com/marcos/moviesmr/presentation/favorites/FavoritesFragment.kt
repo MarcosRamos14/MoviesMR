@@ -39,6 +39,7 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
+        viewModel.getAll()
     }
 
     private fun setupObservers() {
@@ -54,7 +55,6 @@ class FavoritesFragment : Fragment() {
                 }
             }
         }
-        viewModel.getAll()
     }
 
     companion object {
