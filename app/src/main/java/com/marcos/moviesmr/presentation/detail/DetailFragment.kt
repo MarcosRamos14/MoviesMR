@@ -46,9 +46,9 @@ class DetailFragment : Fragment() {
 
         setupView(detailViewArgs)
         setupListener(detailViewArgs)
-        setupObservers()
+        setupObserversSimilar()
         setSharedElementTransitionOnEnter()
-        setAndObserveFavoriteUiState(detailViewArgs)
+        setupObserveFavorite(detailViewArgs)
         viewModel.getSimilar(detailViewArgs.movieId)
     }
 
@@ -68,36 +68,36 @@ class DetailFragment : Fragment() {
         }
 
         binding.imageFavoriteIcon.setOnClickListener {
-            viewModel.favorite.update(detailViewArgs)
+            viewModel.update(detailViewArgs)
         }
     }
 
-    private fun setupObservers() {
-        viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-            binding.flipperDetail.displayedChild = when (uiState) {
-                DetailViewModel.UiState.Loading -> FLIPPER_CHILD_POSITION_LOADING
-                is DetailViewModel.UiState.Success -> {
-                    detailSimilarAdapter.submitList(uiState.similar)
+    private fun setupObserversSimilar() {
+        viewModel.stateSimilar.observe(viewLifecycleOwner) { uiStateSimilar ->
+            binding.flipperDetail.displayedChild = when (uiStateSimilar) {
+                DetailViewModel.UiStateSimilar.Loading -> FLIPPER_CHILD_POSITION_LOADING
+                is DetailViewModel.UiStateSimilar.Success -> {
+                    detailSimilarAdapter.submitList(uiStateSimilar.similar)
                     FLIPPER_CHILD_POSITION_DETAIL
                 }
-                DetailViewModel.UiState.Error -> FLIPPER_CHILD_POSITION_ERROR
-                DetailViewModel.UiState.Empty -> FLIPPER_CHILD_POSITION_EMPTY
+                DetailViewModel.UiStateSimilar.Error -> FLIPPER_CHILD_POSITION_ERROR
+                DetailViewModel.UiStateSimilar.Empty -> FLIPPER_CHILD_POSITION_EMPTY
             }
         }
     }
 
-    private fun setAndObserveFavoriteUiState(detailViewArgs: DetailViewArgs) {
-        viewModel.favorite.run {
+    private fun setupObserveFavorite(detailViewArgs: DetailViewArgs) {
+        viewModel.run {
             checkFavorite(detailViewArgs.movieId)
 
             state.observe(viewLifecycleOwner) { uiState ->
                 binding.flipperFavorite.displayedChild = when (uiState) {
-                    FavoriteUiActionStateLiveData.UiState.Loading -> FLIPPER_FAVORITE_CHILD_POSITION_LOADING
-                    is FavoriteUiActionStateLiveData.UiState.Icon -> {
+                    DetailViewModel.UiStateFavorite.Loading -> FLIPPER_FAVORITE_CHILD_POSITION_LOADING
+                    is DetailViewModel.UiStateFavorite.Icon -> {
                         binding.imageFavoriteIcon.setImageResource(uiState.icon)
                         FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
                     }
-                    is FavoriteUiActionStateLiveData.UiState.Error -> {
+                    is DetailViewModel.UiStateFavorite.Error -> {
                         showShortToast(uiState.messageResId)
                         FLIPPER_FAVORITE_CHILD_POSITION_IMAGE
                     }
