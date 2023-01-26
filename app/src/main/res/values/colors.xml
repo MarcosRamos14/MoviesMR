@@ -14,5 +14,6 @@
     <color name="mrDarkGrey">#1F2633</color>
     <color name="mrMediumGrey">#6C7689</color>
     <color name="mrLightGrey">#D1D1D1</color>
+    <color name="mrGrey200">#C8C5C5</color>
 
 </resources>

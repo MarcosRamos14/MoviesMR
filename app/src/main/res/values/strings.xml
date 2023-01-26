@@ -21,7 +21,7 @@
     <string name="movie_list_title">POPULAR</string>
 
     <!-- Screen Search -->
-    <string name="hello_screen_search">Hello screen search</string>
+    <string name="search_movies">Search movies</string>
 
     <!-- Screen Favorites -->
     <string name="hello_screen_favorites">Hello screen favorites</string>
