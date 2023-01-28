@@ -17,4 +17,9 @@ interface MoviesApi {
     suspend fun getSimilar(
         @Path("movie_id") movieId: Int
     ) : PagedDataWrapperResponse<MovieResponse>
+
+    @GET("search/movie")
+    suspend fun getSearch(
+        @QueryMap query: Map<String, String>
+    ) : PagedDataWrapperResponse<MovieResponse>
 }
