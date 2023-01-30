@@ -4,6 +4,7 @@ import com.marcos.moviesmr.framework.network.response.MovieResponse
 import com.marcos.moviesmr.framework.network.response.PagedDataWrapperResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface MoviesApi {
@@ -20,6 +21,6 @@ interface MoviesApi {
 
     @GET("search/movie")
     suspend fun getSearch(
-        @QueryMap query: Map<String, String>
+        @Query("search") query: String
     ) : PagedDataWrapperResponse<MovieResponse>
 }
