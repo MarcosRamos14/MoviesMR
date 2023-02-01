@@ -1,5 +1,7 @@
 package com.marcos.moviesmr.framework.di
 
+import com.marcos.moviesmr.core.usecase.GetPopularUseCase
+import com.marcos.moviesmr.core.usecase.GetPopularUseCaseImpl
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCase
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCaseImpl
 import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCase
@@ -18,6 +20,9 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 interface UseCaseModule {
+
+    @Binds
+    fun bindGetPopularUseCase(useCase: GetPopularUseCaseImpl) : GetPopularUseCase
 
     @Binds
     fun bindGetSimilarUseCase(useCase: GetSimilarUseCaseImpl) : GetSimilarUseCase
