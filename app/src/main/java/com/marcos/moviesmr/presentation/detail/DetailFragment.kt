@@ -90,7 +90,7 @@ class DetailFragment : Fragment() {
         viewModel.run {
             checkFavorite(detailViewArgs.movieId)
 
-            state.observe(viewLifecycleOwner) { uiState ->
+            stateFavorite.observe(viewLifecycleOwner) { uiState ->
                 binding.flipperFavorite.displayedChild = when (uiState) {
                     DetailViewModel.UiStateFavorite.Loading -> FLIPPER_FAVORITE_CHILD_POSITION_LOADING
                     is DetailViewModel.UiStateFavorite.Icon -> {
