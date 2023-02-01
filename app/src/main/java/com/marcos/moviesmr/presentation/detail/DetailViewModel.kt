@@ -56,7 +56,7 @@ class DetailViewModel @Inject constructor(
     }
 
     private val actionFavorite = MutableLiveData<ActionFavorite>()
-    val state: LiveData<UiStateFavorite> = actionFavorite.switchMap {
+    val stateFavorite: LiveData<UiStateFavorite> = actionFavorite.switchMap {
         liveData(coroutinesDispatchers.main()) {
             when (it) {
                 is ActionFavorite.CheckFavorite -> {
