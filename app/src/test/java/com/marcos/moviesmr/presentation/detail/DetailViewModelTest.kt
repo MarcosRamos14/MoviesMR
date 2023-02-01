@@ -157,4 +157,74 @@ class DetailViewModelTest {
 
             assertEquals(R.drawable.ic_favorite_unchecked, uiStateFavorite.icon)
         }
+
+    @Test
+    fun `should notify stateFavorite with filled favorite icon when current icon is unchecked`() =
+        runTest {
+            // Arrange
+            whenever(addFavoriteUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(Unit)
+                    )
+                )
+
+            // Act
+            detailViewModel.run {
+                currentFavoriteIcon = R.drawable.ic_favorite_unchecked
+                update(
+                    DetailViewArgs(
+                        movie.id ?: 0,
+                        movie.title ?: "",
+                        movie.imageUrl ?: "",
+                        movie.year ?: "",
+                        movie.likes ?: 0,
+                        movie.popularity ?: 0.0
+                    )
+                )
+            }
+
+            // Assert
+            verify(uiStateFavoriteObserver).onChanged(isA<DetailViewModel.UiStateFavorite.Icon>())
+
+            val uiStateFavorite =
+                detailViewModel.stateFavorite.value as DetailViewModel.UiStateFavorite.Icon
+
+            assertEquals(R.drawable.ic_favorite_checked, uiStateFavorite.icon)
+        }
+
+    @Test
+    fun `should call, remove and notify stateFavorite with filled favorite icon when current icon is checked`() =
+        runTest {
+            // Arrange
+            whenever(removeFavoriteUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(Unit)
+                    )
+                )
+
+            // Act
+            detailViewModel.run {
+                currentFavoriteIcon = R.drawable.ic_favorite_checked
+                update(
+                    DetailViewArgs(
+                        movie.id ?: 0,
+                        movie.title ?: "",
+                        movie.imageUrl ?: "",
+                        movie.year ?: "",
+                        movie.likes ?: 0,
+                        movie.popularity ?: 0.0
+                    )
+                )
+            }
+
+            // Assert
+            verify(uiStateFavoriteObserver).onChanged(isA<DetailViewModel.UiStateFavorite.Icon>())
+
+            val uiStateFavorite =
+                detailViewModel.stateFavorite.value as DetailViewModel.UiStateFavorite.Icon
+
+            assertEquals(R.drawable.ic_favorite_unchecked, uiStateFavorite.icon)
+        }
 }
