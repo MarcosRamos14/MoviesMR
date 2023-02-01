@@ -2,6 +2,7 @@ package com.marcos.moviesmr.presentation.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.marcos.moviesmr.R
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCase
 import com.marcos.moviesmr.core.usecase.base.ResultStatus
 import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCase
@@ -95,7 +96,7 @@ class DetailViewModelTest {
     }
 
     @Test
-    fun `should notify stateSimilar with error when GetSimilar return an exception`() =  runTest {
+    fun `should notify stateSimilar with error when GetSimilar return an exception`() = runTest {
         // Arrange
         whenever(getSimilarUseCase.invoke(any()))
             .thenReturn(
@@ -110,4 +111,50 @@ class DetailViewModelTest {
         // Assert
         verify(uiStateSimilarObserver).onChanged(isA<DetailViewModel.UiStateSimilar.Error>())
     }
+
+    @Test
+    fun `should notify stateFavorite with filled favorite icon when check favorite returns true`() =
+        runTest {
+            // Arrange
+            whenever(checkFavoriteUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(true)
+                    )
+                )
+
+            // Act
+            detailViewModel.checkFavorite(movie.id ?: 0)
+
+            // Assert
+            verify(uiStateFavoriteObserver).onChanged(isA<DetailViewModel.UiStateFavorite.Icon>())
+
+            val uiStateFavorite =
+                detailViewModel.stateFavorite.value as DetailViewModel.UiStateFavorite.Icon
+
+            assertEquals(R.drawable.ic_favorite_checked, uiStateFavorite.icon)
+        }
+
+    @Test
+    fun `should notify stateFavorite with filled favorite icon when check favorite returns false`() =
+        runTest {
+            // Arrange
+            whenever(checkFavoriteUseCase.invoke(any()))
+                .thenReturn(
+                    flowOf(
+                        ResultStatus.Success(false)
+                    )
+                )
+
+            // Act
+            detailViewModel.checkFavorite(movie.id ?: 0)
+
+            // Assert
+            verify(uiStateFavoriteObserver).onChanged(isA<DetailViewModel.UiStateFavorite.Icon>())
+
+            val uiStateFavorite =
+                detailViewModel.stateFavorite.value as DetailViewModel.UiStateFavorite.Icon
+
+            assertEquals(R.drawable.ic_favorite_unchecked, uiStateFavorite.icon)
+        }
 }
