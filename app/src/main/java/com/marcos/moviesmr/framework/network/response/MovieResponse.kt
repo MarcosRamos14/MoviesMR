@@ -20,7 +20,7 @@ fun MovieResponse.toMovieModel() : Movie {
         id = this.id,
         title = this.title,
         year = this.year,
-        imageUrl = this.imageUrl?.replace("http", "https"),
+        imageUrl = this.imageUrl,
         likes = this.likes,
         popularity = this.popularity
     )
