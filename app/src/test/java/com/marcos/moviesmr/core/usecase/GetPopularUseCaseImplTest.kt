@@ -1,7 +1,7 @@
 package com.marcos.moviesmr.core.usecase
 
 import androidx.paging.PagingConfig
-import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.core.data.repository.MoviesRepository
 import com.marcos.moviesmr.testing.MainCoroutineRule
 import com.marcos.moviesmr.testing.model.MoviesFactory
 import com.marcos.moviesmr.testing.model.PagingSourceFactory
@@ -26,7 +26,7 @@ class GetPopularUseCaseImplTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    private lateinit var repository: PopularRepository
+    private lateinit var repository: MoviesRepository
 
     private lateinit var getPopularUseCase: GetPopularUseCase
 

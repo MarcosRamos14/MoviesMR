@@ -2,12 +2,12 @@ package com.marcos.moviesmr.framework.di
 
 import com.marcos.moviesmr.core.data.repository.FavoriteLocalDataSource
 import com.marcos.moviesmr.core.data.repository.FavoriteRepository
-import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
-import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.core.data.repository.MoviesRemoteDataSource
+import com.marcos.moviesmr.core.data.repository.MoviesRepository
 import com.marcos.moviesmr.framework.FavoriteRepositoryImpl
-import com.marcos.moviesmr.framework.PopularRepositoryImpl
+import com.marcos.moviesmr.framework.MoviesRepositoryImpl
 import com.marcos.moviesmr.framework.local.FavoriteLocalDataSourceImpl
-import com.marcos.moviesmr.framework.remote.PopularRemoteDataSourceImpl
+import com.marcos.moviesmr.framework.remote.MoviesRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,10 +18,10 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoryModule {
 
     @Binds
-    fun bindPopularRepository(repository: PopularRepositoryImpl) : PopularRepository
+    fun bindPopularRepository(repository: MoviesRepositoryImpl) : MoviesRepository
 
     @Binds
-    fun bindPopularRemoteDataSource(dataSource: PopularRemoteDataSourceImpl) : PopularRemoteDataSource
+    fun bindPopularRemoteDataSource(dataSource: MoviesRemoteDataSourceImpl) : MoviesRemoteDataSource
 
     @Binds
     fun bindFavoriteRepository(repository: FavoriteRepositoryImpl) : FavoriteRepository

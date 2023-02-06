@@ -2,12 +2,12 @@ package com.marcos.moviesmr.framework.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
+import com.marcos.moviesmr.core.data.repository.MoviesRemoteDataSource
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.framework.network.response.toMovieModel
 
 class PopularPagingSource(
-    private val remoteDataSource: PopularRemoteDataSource
+    private val remoteDataSource: MoviesRemoteDataSource
 ) : PagingSource<Int, Movie>() {
 
     @Suppress("TooGenericExceptionCaught")

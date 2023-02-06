@@ -1,7 +1,7 @@
 package com.marcos.moviesmr.framework.paging
 
 import androidx.paging.PagingSource
-import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
+import com.marcos.moviesmr.core.data.repository.MoviesRemoteDataSource
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.testing.MainCoroutineRule
 import com.marcos.moviesmr.testing.model.MoviesFactory
@@ -26,7 +26,7 @@ class PopularPagingSourceTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    private lateinit var remoteDataSource: PopularRemoteDataSource
+    private lateinit var remoteDataSource: MoviesRemoteDataSource
 
     private val pagedDataWrapperResponseFactory = PagedDataWrapperResponseFactory()
 
