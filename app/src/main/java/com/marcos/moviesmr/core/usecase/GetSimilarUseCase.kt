@@ -1,6 +1,6 @@
 package com.marcos.moviesmr.core.usecase
 
-import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.core.data.repository.MoviesRepository
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.core.usecase.base.ResultStatus
 import com.marcos.moviesmr.core.usecase.base.UseCase
@@ -15,7 +15,7 @@ interface GetSimilarUseCase {
 }
 
 class GetSimilarUseCaseImpl @Inject constructor(
-    private val repository: PopularRepository
+    private val repository: MoviesRepository
 ) : GetSimilarUseCase, UseCase<GetSimilarUseCase.GetSimilarParams, List<Movie>>() {
 
     override suspend fun doWork(

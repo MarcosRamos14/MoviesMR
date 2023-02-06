@@ -3,7 +3,7 @@ package com.marcos.moviesmr.core.usecase
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.core.data.repository.MoviesRepository
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.core.usecase.GetPopularUseCase.GetPopularParams
 import com.marcos.moviesmr.core.usecase.base.PagingUseCase
@@ -18,11 +18,11 @@ interface GetPopularUseCase {
 }
 
 class GetPopularUseCaseImpl @Inject constructor(
-    private val popularRepository : PopularRepository
+    private val moviesRepository : MoviesRepository
 ) : PagingUseCase<GetPopularParams, Movie>(), GetPopularUseCase {
 
     override fun createFlowObservable(params: GetPopularParams) : Flow<PagingData<Movie>> {
-        val pagingSource = popularRepository.getPopular(params.query)
+        val pagingSource = moviesRepository.getPopular(params.query)
         return Pager(config = params.pagingConfig) {
             pagingSource
         }.flow

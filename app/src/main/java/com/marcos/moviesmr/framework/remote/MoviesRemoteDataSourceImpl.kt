@@ -1,16 +1,16 @@
 package com.marcos.moviesmr.framework.remote
 
-import com.marcos.moviesmr.core.data.repository.PopularRemoteDataSource
+import com.marcos.moviesmr.core.data.repository.MoviesRemoteDataSource
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.framework.network.MoviesApi
-import com.marcos.moviesmr.framework.network.response.PagedDataWrapperResponse
 import com.marcos.moviesmr.framework.network.response.MovieResponse
+import com.marcos.moviesmr.framework.network.response.PagedDataWrapperResponse
 import com.marcos.moviesmr.framework.network.response.toMovieModel
 import javax.inject.Inject
 
-class PopularRemoteDataSourceImpl @Inject constructor(
+class MoviesRemoteDataSourceImpl @Inject constructor(
     private val moviesApi: MoviesApi
-) : PopularRemoteDataSource {
+) : MoviesRemoteDataSource {
 
     override suspend fun fetchPopular(
         queries: Map<String, String>

@@ -1,6 +1,6 @@
 package com.marcos.moviesmr.core.usecase
 
-import com.marcos.moviesmr.core.data.repository.PopularRepository
+import com.marcos.moviesmr.core.data.repository.MoviesRepository
 import com.marcos.moviesmr.core.usecase.base.ResultStatus
 import com.marcos.moviesmr.testing.MainCoroutineRule
 import com.marcos.moviesmr.testing.model.MoviesFactory
@@ -24,7 +24,7 @@ class GetSimilarUseCaseImplTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    private lateinit var repository: PopularRepository
+    private lateinit var repository: MoviesRepository
 
     private val movie = MoviesFactory().create(MoviesFactory.Popular.Deadpool)
 
