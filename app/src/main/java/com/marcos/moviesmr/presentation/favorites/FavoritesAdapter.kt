@@ -9,13 +9,15 @@ import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import com.marcos.moviesmr.presentation.favorites.FavoritesAdapter.FavoritesViewHolder
+import com.marcos.moviesmr.utils.OnHomeItemClick
 
 class FavoritesAdapter(
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val onItemClick: OnHomeItemClick
 ) : ListAdapter<Movie, FavoritesViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
-        return FavoritesViewHolder.create(parent, imageLoader)
+        return FavoritesViewHolder.create(parent, imageLoader, onItemClick)
     }
 
     override fun onBindViewHolder(holder: FavoritesViewHolder, position: Int) {
@@ -24,7 +26,8 @@ class FavoritesAdapter(
 
     class FavoritesViewHolder(
         itemMoviesBinding: ItemMoviesBinding,
-        private val imageLoader: ImageLoader
+        private val imageLoader: ImageLoader,
+        private val onItemClick: OnHomeItemClick
     ) : RecyclerView.ViewHolder(itemMoviesBinding.root) {
 
         private val textName = itemMoviesBinding.textName
@@ -35,16 +38,21 @@ class FavoritesAdapter(
             textName.text = movie.title
             textYear.text = movie.year
             imageLoader.load(imageMovies, movie.imageUrl)
+
+            itemView.setOnClickListener {
+                onItemClick.invoke(movie, imageMovies)
+            }
         }
 
         companion object {
             fun create(
                 parent: ViewGroup,
-                imageLoader: ImageLoader
+                imageLoader: ImageLoader,
+                onItemClick: OnHomeItemClick
             ) : FavoritesViewHolder {
                 val itemMoviesBinding = ItemMoviesBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                return FavoritesViewHolder(itemMoviesBinding, imageLoader)
+                return FavoritesViewHolder(itemMoviesBinding, imageLoader, onItemClick)
             }
         }
     }
