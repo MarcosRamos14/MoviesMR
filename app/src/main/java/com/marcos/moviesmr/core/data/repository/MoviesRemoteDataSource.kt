@@ -9,4 +9,6 @@ interface MoviesRemoteDataSource {
     suspend fun fetchPopular(queries: Map<String, String>) : PagedDataWrapperResponse<MovieResponse>
 
     suspend fun fetchSimilar(movieId: Int) : List<Movie>
+
+    suspend fun fetchSearch(query: String) : List<Movie>
 }

@@ -2,6 +2,8 @@ package com.marcos.moviesmr.framework.di
 
 import com.marcos.moviesmr.core.usecase.GetPopularUseCase
 import com.marcos.moviesmr.core.usecase.GetPopularUseCaseImpl
+import com.marcos.moviesmr.core.usecase.GetSearchUseCase
+import com.marcos.moviesmr.core.usecase.GetSearchUseCaseImpl
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCase
 import com.marcos.moviesmr.core.usecase.GetSimilarUseCaseImpl
 import com.marcos.moviesmr.core.usecase.favorite.AddFavoriteUseCase
@@ -26,6 +28,9 @@ interface UseCaseModule {
 
     @Binds
     fun bindGetSimilarUseCase(useCase: GetSimilarUseCaseImpl) : GetSimilarUseCase
+
+    @Binds
+    fun bindGetSearchUseCase(useCase: GetSearchUseCaseImpl) : GetSearchUseCase
 
     @Binds
     fun bindCheckFavoriteUseCase(useCase: CheckFavoriteUseCaseImpl) : CheckFavoriteUseCase
