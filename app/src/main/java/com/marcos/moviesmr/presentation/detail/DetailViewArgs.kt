@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-data class DetailViewArgs(
+data class
+DetailViewArgs(
     val movieId: Int,
     val title: String,
     val year: String,

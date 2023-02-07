@@ -23,4 +23,10 @@ class MoviesRemoteDataSourceImpl @Inject constructor(
             it.toMovieModel()
         } ?: emptyList()
     }
+
+    override suspend fun fetchSearch(query: String): List<Movie> {
+        return moviesApi.getSearch(query).results?.map {
+            it.toMovieModel()
+        } ?: emptyList()
+    }
 }

@@ -9,18 +9,18 @@ import retrofit2.http.QueryMap
 
 interface MoviesApi {
 
-    @GET("popular")
+    @GET("movie/popular")
     suspend fun getPopular(
         @QueryMap queries: Map<String, String>
     ) : PagedDataWrapperResponse<MovieResponse>
 
-    @GET("{movie_id}/similar")
+    @GET("movie/{movie_id}/similar")
     suspend fun getSimilar(
         @Path("movie_id") movieId: Int
     ) : PagedDataWrapperResponse<MovieResponse>
 
     @GET("search/movie")
     suspend fun getSearch(
-        @Query("search") query: String
+        @Query("query") query: String
     ) : PagedDataWrapperResponse<MovieResponse>
 }

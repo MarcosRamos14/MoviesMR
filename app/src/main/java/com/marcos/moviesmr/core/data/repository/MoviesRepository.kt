@@ -8,4 +8,6 @@ interface MoviesRepository {
     fun getPopular(query: String) : PagingSource<Int, Movie>
 
     suspend fun getSimilar(movieId: Int) : List<Movie>
+
+    suspend fun getSearch(query: String) : List<Movie>
 }

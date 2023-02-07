@@ -1,4 +1,4 @@
-package com.marcos.moviesmr.presentation.search
+package com.marcos.moviesmr.framework.network.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
-import com.marcos.moviesmr.presentation.search.SearchAdapter.SearchViewHolder
+import com.marcos.moviesmr.framework.network.search.SearchAdapter.SearchViewHolder
 
 class SearchAdapter(
     private val imageLoader: ImageLoader

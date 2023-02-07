@@ -8,14 +8,18 @@ import com.marcos.moviesmr.framework.paging.PopularPagingSource
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MoviesRemoteDataSource
+    private val moviesRemoteDataSource: MoviesRemoteDataSource
 ) : MoviesRepository {
 
     override fun getPopular(query: String) : PagingSource<Int, Movie> {
-        return PopularPagingSource(remoteDataSource)
+        return PopularPagingSource(moviesRemoteDataSource)
     }
 
     override suspend fun getSimilar(movieId: Int): List<Movie> {
-        return remoteDataSource.fetchSimilar(movieId)
+        return moviesRemoteDataSource.fetchSimilar(movieId)
+    }
+
+    override suspend fun getSearch(query: String): List<Movie> {
+        return moviesRemoteDataSource.fetchSearch(query)
     }
 }
