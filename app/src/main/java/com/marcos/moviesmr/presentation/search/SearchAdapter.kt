@@ -1,4 +1,4 @@
-package com.marcos.moviesmr.framework.network.search
+package com.marcos.moviesmr.presentation.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,14 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
-import com.marcos.moviesmr.framework.network.search.SearchAdapter.SearchViewHolder
+import com.marcos.moviesmr.presentation.search.SearchAdapter.SearchViewHolder
+import com.marcos.moviesmr.utils.OnHomeItemClick
 
 class SearchAdapter(
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val onItemClick: OnHomeItemClick
 ) : ListAdapter<Movie, SearchViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : SearchViewHolder {
-        return SearchViewHolder.create(parent, imageLoader)
+        return SearchViewHolder.create(parent, imageLoader, onItemClick)
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
@@ -24,7 +26,8 @@ class SearchAdapter(
 
     class SearchViewHolder(
         itemMoviesBinding: ItemMoviesBinding,
-        private val imageLoader: ImageLoader
+        private val imageLoader: ImageLoader,
+        private val onItemClick: OnHomeItemClick
     ) : RecyclerView.ViewHolder(itemMoviesBinding.root) {
 
         private val textName = itemMoviesBinding.textName
@@ -34,17 +37,25 @@ class SearchAdapter(
         fun bind(movie: Movie) {
             textName.text = movie.title
             textYear.text = movie.year
-            imageLoader.load(imageMovies, movie.imageUrl)
+            imageMovies.run {
+                transitionName = movie.title
+                imageLoader.load(this, movie.imageUrl)
+            }
+
+            itemView.setOnClickListener {
+                onItemClick.invoke(movie, imageMovies)
+            }
         }
 
         companion object {
             fun create(
                 parent: ViewGroup,
-                imageLoader: ImageLoader
+                imageLoader: ImageLoader,
+                onItemClick: OnHomeItemClick
             ) : SearchViewHolder {
                 val itemMoviesBinding = ItemMoviesBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
-                return SearchViewHolder(itemMoviesBinding, imageLoader)
+                return SearchViewHolder(itemMoviesBinding, imageLoader, onItemClick)
             }
         }
     }

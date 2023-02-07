@@ -1,4 +1,4 @@
-package com.marcos.moviesmr.framework.network.search
+package com.marcos.moviesmr.presentation.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

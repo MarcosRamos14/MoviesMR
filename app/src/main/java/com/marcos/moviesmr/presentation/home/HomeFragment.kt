@@ -16,7 +16,6 @@ import androidx.paging.LoadState
 import com.marcos.moviesmr.R
 import com.marcos.moviesmr.databinding.FragmentHomeBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
-import com.marcos.moviesmr.presentation.detail.DetailViewArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -39,14 +38,7 @@ class HomeFragment : Fragment() {
             val directions = HomeFragmentDirections
                 .actionHomeFragmentToDetailFragment(
                     popular.title ?: errorLoadingTitle,
-                    DetailViewArgs(
-                        movieId = popular.id ?: 0,
-                        title = popular.title ?: errorLoadingTitle,
-                        year = popular.year ?: errorLoadingTitle,
-                        imageUrl = popular.imageUrl ?: errorLoadingTitle,
-                        likes = popular.likes ?: 0,
-                        popularity = popular.popularity ?: 0.0
-                    )
+                    popular.toDetailViewArgs()
                 )
             findNavController().navigate(directions, extras)
         }
