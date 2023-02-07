@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.marcos.moviesmr.databinding.FragmentDetailBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
@@ -26,6 +27,11 @@ class DetailFragment : Fragment() {
         return@lazy adapter
     }
 
+    private val movieId: Int
+        get() = args.detailViewArgs.movieId ?: run {
+            findNavController().popBackStack(); 0
+        }
+
     @Inject
     lateinit var imageLoader: ImageLoader
 
@@ -43,13 +49,12 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val detailViewArgs = args.detailViewArgs
-
         setupView(detailViewArgs)
         setupListener(detailViewArgs)
         setupObserversSimilar()
         setSharedElementTransitionOnEnter()
-        setupObserveFavorite(detailViewArgs)
-        viewModel.getSimilar(detailViewArgs.movieId)
+        setupObserveFavorite()
+        viewModel.getSimilar(movieId)
     }
 
     private fun setupView(detailViewArgs: DetailViewArgs) {
@@ -64,7 +69,7 @@ class DetailFragment : Fragment() {
 
     private fun setupListener(detailViewArgs: DetailViewArgs) {
         binding.includeErrorView.buttonRetry.setOnClickListener {
-            viewModel.getSimilar(detailViewArgs.movieId)
+            viewModel.getSimilar(movieId)
         }
 
         binding.imageFavoriteIcon.setOnClickListener {
@@ -86,9 +91,9 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setupObserveFavorite(detailViewArgs: DetailViewArgs) {
+    private fun setupObserveFavorite() {
         viewModel.run {
-            checkFavorite(detailViewArgs.movieId)
+            checkFavorite(movieId)
 
             stateFavorite.observe(viewLifecycleOwner) { uiState ->
                 binding.flipperFavorite.displayedChild = when (uiState) {

@@ -71,15 +71,8 @@ class DetailViewModel @Inject constructor(
                 }
                 is ActionFavorite.AddFavorite -> {
                     it.detailViewArgs.run {
-                        addFavoriteUseCase.invoke(
-                            AddFavoriteUseCase.Params(
-                                movieId,
-                                title,
-                                year,
-                                imageUrl,
-                                likes,
-                                popularity
-                            )
+                        addFavoriteUseCase(
+                            toAddFavoriteUseCaseParams()
                         ).watchStatus(
                             loading = {
                                 emit(UiStateFavorite.Loading)
@@ -96,15 +89,8 @@ class DetailViewModel @Inject constructor(
                 }
                 is ActionFavorite.RemoveFavorite -> {
                     it.detailViewArgs.run {
-                        removeFavoriteUseCase.invoke(
-                            RemoveFavoriteUseCase.Params(
-                                movieId,
-                                title,
-                                year,
-                                imageUrl,
-                                likes,
-                                popularity
-                            )
+                        removeFavoriteUseCase(
+                            toRemoveFavoriteUseCaseParams()
                         ).watchStatus(
                             loading = {
                                 emit(UiStateFavorite.Loading)

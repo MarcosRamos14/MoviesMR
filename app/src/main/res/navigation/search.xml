@@ -7,7 +7,27 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.marcos.moviesmr.framework.network.search.SearchFragment"
+        android:name="com.marcos.moviesmr.presentation.search.SearchFragment"
         android:label="@string/search_screen_title"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment2"
+        android:name="com.marcos.moviesmr.presentation.detail.DetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_detail" >
+
+        <argument
+            android:name="screenTitle"
+            app:argType="string" />
+
+        <argument
+            android:name="detailViewArgs"
+            app:argType="com.marcos.moviesmr.presentation.detail.DetailViewArgs" />
+
+    </fragment>
 </navigation>

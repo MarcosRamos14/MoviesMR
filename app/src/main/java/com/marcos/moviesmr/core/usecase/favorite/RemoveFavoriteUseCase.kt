@@ -15,12 +15,12 @@ interface RemoveFavoriteUseCase {
     operator fun invoke(params: Params) : Flow<ResultStatus<Unit>>
 
     data class Params(
-        val movieId: Int,
-        val title: String,
-        val year: String,
-        val imageUrl: String,
-        val likes: Int,
-        val popularity: Double
+        val movieId: Int?,
+        val title: String?,
+        val year: String?,
+        val imageUrl: String?,
+        val likes: Int?,
+        val popularity: Double?
     )
 }
 
