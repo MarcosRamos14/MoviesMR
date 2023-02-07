@@ -5,11 +5,11 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
-import com.marcos.moviesmr.utils.OnHomeItemClick
+import com.marcos.moviesmr.utils.OnItemClick
 
 class HomeAdapter(
     private val imageLoader: ImageLoader,
-    private val onItemClick: OnHomeItemClick
+    private val onItemClick: OnItemClick
 ) : PagingDataAdapter<Movie, HomeViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : HomeViewHolder {
