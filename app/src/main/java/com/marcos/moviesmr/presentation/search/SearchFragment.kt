@@ -63,11 +63,12 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerSearch.adapter = searchAdapter
         setupObserverSearch()
+        setupListener()
+    }
 
+    private fun setupListener() {
         binding.editTextSearch.addTextChangedListener(object : TextWatcher {
             var job: Job? = null
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 job?.cancel()
@@ -76,7 +77,7 @@ class SearchFragment : Fragment() {
                     viewModel.getSearch(p0.toString())
                 }
             }
-
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {}
         })
     }
@@ -88,7 +89,9 @@ class SearchFragment : Fragment() {
                     searchAdapter.submitList(uiStateSearch.search)
                     FLIPPER_CHILD_POSITION_SEARCH
                 }
-                SearchViewModel.UiStateSearch.Empty -> FLIPPER_CHILD_POSITION_EMPTY
+                SearchViewModel.UiStateSearch.Empty -> {
+                    FLIPPER_CHILD_POSITION_EMPTY
+                }
             }
         }
     }
