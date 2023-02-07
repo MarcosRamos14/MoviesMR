@@ -9,11 +9,11 @@ import com.marcos.moviesmr.core.domain.model.Movie
 import com.marcos.moviesmr.databinding.ItemMoviesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import com.marcos.moviesmr.presentation.search.SearchAdapter.SearchViewHolder
-import com.marcos.moviesmr.utils.OnHomeItemClick
+import com.marcos.moviesmr.utils.OnItemClick
 
 class SearchAdapter(
     private val imageLoader: ImageLoader,
-    private val onItemClick: OnHomeItemClick
+    private val onItemClick: OnItemClick
 ) : ListAdapter<Movie, SearchViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : SearchViewHolder {
@@ -27,7 +27,7 @@ class SearchAdapter(
     class SearchViewHolder(
         itemMoviesBinding: ItemMoviesBinding,
         private val imageLoader: ImageLoader,
-        private val onItemClick: OnHomeItemClick
+        private val onItemClick: OnItemClick
     ) : RecyclerView.ViewHolder(itemMoviesBinding.root) {
 
         private val textName = itemMoviesBinding.textName
@@ -51,7 +51,7 @@ class SearchAdapter(
             fun create(
                 parent: ViewGroup,
                 imageLoader: ImageLoader,
-                onItemClick: OnHomeItemClick
+                onItemClick: OnItemClick
             ) : SearchViewHolder {
                 val itemMoviesBinding = ItemMoviesBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
