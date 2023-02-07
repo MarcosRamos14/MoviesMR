@@ -3,11 +3,9 @@ package com.marcos.moviesmr.presentation.search
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +25,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
     private val viewModel: SearchViewModel by viewModels()
+
     private val searchAdapter: SearchAdapter by lazy {
         val adapter = SearchAdapter(imageLoader) { search, view ->
             val errorLoadingTitle = getString(R.string.error_loading_title)
@@ -40,10 +39,9 @@ class SearchFragment : Fragment() {
                     search.title ?: errorLoadingTitle,
                     search.toDetailViewArgs()
                 )
+
             findNavController().navigate(directions, extras)
         }
-
-        binding.recyclerSearch.adapter = adapter
         return@lazy adapter
     }
 
@@ -63,6 +61,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recyclerSearch.adapter = searchAdapter
         setupObserverSearch()
 
         binding.editTextSearch.addTextChangedListener(object : TextWatcher {
@@ -79,12 +78,6 @@ class SearchFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {}
-        })
-
-        binding.editTextSearch.setOnEditorActionListener(object : TextView.OnEditorActionListener {
-            override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean {
-                return false
-            }
         })
     }
 

@@ -36,7 +36,6 @@ class FavoritesFragment : Fragment() {
 
             findNavController().navigate(directions, extras)
         }
-        binding.recyclerFavorites.adapter = adapter
         return@lazy adapter
     }
 
@@ -56,6 +55,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recyclerFavorites.adapter = favoritesAdapter
         setupObservers()
         viewModel.getAll()
     }
