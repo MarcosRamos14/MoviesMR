@@ -28,6 +28,5 @@
         <argument
             android:name="detailViewArgs"
             app:argType="com.marcos.moviesmr.presentation.detail.DetailViewArgs" />
-
     </fragment>
 </navigation>
