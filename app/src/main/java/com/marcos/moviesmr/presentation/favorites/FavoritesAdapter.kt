@@ -37,7 +37,10 @@ class FavoritesAdapter(
         fun bind(movie: Movie) {
             textName.text = movie.title
             textYear.text = movie.year
-            imageLoader.load(imageMovies, movie.imageUrl)
+            imageMovies.run {
+                transitionName = movie.title
+                imageLoader.load(this, movie.imageUrl)
+            }
 
             itemView.setOnClickListener {
                 onItemClick.invoke(movie, imageMovies)

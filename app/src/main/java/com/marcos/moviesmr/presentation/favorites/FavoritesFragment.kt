@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.marcos.moviesmr.R
 import com.marcos.moviesmr.databinding.FragmentFavoritesBinding
 import com.marcos.moviesmr.framework.imageLoader.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,8 +19,23 @@ class FavoritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoritesBinding
     private val viewModel: FavoritesViewModel by viewModels()
+
     private val favoritesAdapter: FavoritesAdapter by lazy {
-        val adapter = FavoritesAdapter(imageLoader)
+        val adapter = FavoritesAdapter(imageLoader) { favorites, view ->
+            val errorLoadingTitle = getString(R.string.error_loading_title)
+
+            val extras = FragmentNavigatorExtras(
+                view to (favorites.title ?: errorLoadingTitle)
+            )
+
+            val directions = FavoritesFragmentDirections
+                .actionFavoritesFragmentToDetailFragment(
+                    favorites.title ?: errorLoadingTitle,
+                    favorites.toDetailViewArgs()
+                )
+
+            findNavController().navigate(directions, extras)
+        }
         binding.recyclerFavorites.adapter = adapter
         return@lazy adapter
     }

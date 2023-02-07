@@ -35,7 +35,8 @@ class SearchFragment : Fragment() {
                 view to (search.title ?: errorLoadingTitle)
             )
 
-            val directions = SearchFragmentDirections.actionSearchFragmentToDetailFragment(
+            val directions = SearchFragmentDirections
+                .actionSearchFragmentToDetailFragment(
                     search.title ?: errorLoadingTitle,
                     search.toDetailViewArgs()
                 )
