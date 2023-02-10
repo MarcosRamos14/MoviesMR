@@ -22,6 +22,9 @@ buildscript {
     ext.room_version = "2.4.1"
     ext.archTesting_version = "2.1.0"
     ext.mockito_version = "2.2.0"
+    ext.gservices_version = "4.3.15"
+    ext.firebasebom_version = "31.2.0"
+    ext.crashlytics_version = "2.9.2"
 
     repositories {
         google()
@@ -33,6 +36,8 @@ buildscript {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.android.support:design:$design_version"
+        classpath "com.google.gms:google-services:$gservices_version"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlytics_version"
     }
 }
 

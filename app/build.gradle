@@ -1,6 +1,8 @@
 plugins {
     id 'kotlin-android'
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -56,7 +58,6 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
-            applicationIdSuffix '.release'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -142,6 +143,11 @@ dependencies {
     // Instrumentation tests
     androidTestImplementation "androidx.test.ext:junit:$extjunit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    // Firebase
+    implementation platform ("com.google.firebase:firebase-bom:$firebasebom_version")
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Other Libs
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
