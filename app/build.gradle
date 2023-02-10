@@ -17,6 +17,15 @@ android {
     namespace 'com.marcos.moviesmr'
     compileSdk 33
 
+    signingConfigs {
+        release {
+            storeFile file('C:\\Estudo mobile\\MR\\APPs\\MoviesMR\\store\\movies_mr_key_store.jks')
+            storePassword 'Marcos1303'
+            keyPassword 'Marcos1303'
+            keyAlias 'movies-mr'
+        }
+    }
+
     defaultConfig {
         applicationId "com.marcos.moviesmr"
         minSdk 23
@@ -44,6 +53,7 @@ android {
                     'proguard-rules-staging.pro'
         }
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             applicationIdSuffix '.release'

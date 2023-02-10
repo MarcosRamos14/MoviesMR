@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName
 import com.marcos.moviesmr.core.domain.model.Movie
 
 data class MovieResponse(
+    @SerializedName("id")
     val id: Int?,
+    @SerializedName("title")
     val title: String?,
     @SerializedName("release_date")
     val year: String?,
@@ -12,6 +14,7 @@ data class MovieResponse(
     val imageUrl: String?,
     @SerializedName("vote_count")
     val likes: Int?,
+    @SerializedName("popularity")
     val popularity: Double?
 )
 
