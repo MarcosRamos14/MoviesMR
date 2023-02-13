@@ -2,8 +2,8 @@ package com.marcos.moviesmr.presentation.home
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.marcos.moviesmr.R
 import com.marcos.moviesmr.extension.asJsonString
@@ -40,10 +40,33 @@ class HomeFragmentTest {
 
     @Test
     fun shouldShowPopularMovies_viewIsCreated() {
+        // Arrange
         server.enqueue(MockResponse().setBody("movies_p1.json".asJsonString()))
 
+        // Action
         onView(
             withId(R.id.recycler_movies_home)
+        ).check(
+            matches(isDisplayed())
+        )
+    }
+
+    @Test
+    fun shouldLoadMorePopularMovies_whenNewPageIsRequested() {
+        // Arrange
+        server.enqueue(MockResponse().setBody("movies_p1.json".asJsonString()))
+        server.enqueue(MockResponse().setBody("movies_p2.json".asJsonString()))
+
+        // Action
+        onView(
+            withId(R.id.recycler_movies_home)
+        ).perform(
+            RecyclerViewActions.scrollToPosition<HomeViewHolder>(20)
+        )
+
+        // Assert
+        onView(
+            withText("Beneath the Surface")
         ).check(
             matches(isDisplayed())
         )

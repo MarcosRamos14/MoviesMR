@@ -21,6 +21,8 @@ buildscript {
     ext.espresso_version = "3.4.0"
     ext.fragmenttest_version = "1.4.0"
     ext.mockweb_version = "4.10.0"
+    ext.testrunner_version = "1.4.0"
+    ext.orchestrator_version = "1.4.0"
     ext.room_version = "2.4.1"
     ext.archTesting_version = "2.1.0"
     ext.mockito_version = "2.2.0"
