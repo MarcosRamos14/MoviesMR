@@ -35,7 +35,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.marcos.moviesmr.CustomTestRunner"
 
         buildConfigField "String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY']
         buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
@@ -146,6 +146,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     debugImplementation "androidx.fragment:fragment-testing:$fragmenttest_version"
+
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Firebase
     implementation platform ("com.google.firebase:firebase-bom:$firebasebom_version")
