@@ -149,6 +149,8 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockweb_version"
+
     // Firebase
     implementation platform ("com.google.firebase:firebase-bom:$firebasebom_version")
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
