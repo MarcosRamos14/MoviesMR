@@ -157,6 +157,11 @@ dependencies {
 
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockweb_version"
 
+    androidTestImplementation "androidx.test:runner:$testrunner_version"
+    androidTestUtil "androidx.test:orchestrator:$orchestrator_version"
+
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.0"
+
     // Firebase
     implementation platform ("com.google.firebase:firebase-bom:$firebasebom_version")
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
