@@ -144,6 +144,8 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$extjunit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
+    debugImplementation "androidx.fragment:fragment-testing:$fragmenttest_version"
+
     // Firebase
     implementation platform ("com.google.firebase:firebase-bom:$firebasebom_version")
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
