@@ -43,7 +43,7 @@ class HomeFragmentTest {
         // Arrange
         server.enqueue(MockResponse().setBody("movies_p1.json".asJsonString()))
 
-        // Action
+        // Assert
         onView(
             withId(R.id.recycler_movies_home)
         ).check(
@@ -67,6 +67,19 @@ class HomeFragmentTest {
         // Assert
         onView(
             withText("Beneath the Surface")
+        ).check(
+            matches(isDisplayed())
+        )
+    }
+
+    @Test
+    fun shouldShowErrorView_whenReceivesAnErrorFromApi() {
+        // Arrange
+        server.enqueue(MockResponse().setResponseCode(404))
+
+        // Assert
+        onView(
+            withId(R.id.text_initial_loading_error)
         ).check(
             matches(isDisplayed())
         )
