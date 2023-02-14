@@ -25,10 +25,10 @@ Essa aplicação não só permite favoritar diversos filmes, onde é exibido em 
 
 ## Layout mobile
 <div>
-<img src="https://user-images.githubusercontent.com/102616606/218779638-da910ca2-2202-4332-951e-d375ecc7322a.jpeg" width="200px" />
-<img src="https://user-images.githubusercontent.com/102616606/218783157-7b580a1a-0b31-4198-a431-e092225063a2.jpeg" width="200px" />
-<img src="https://user-images.githubusercontent.com/102616606/218783532-02d47e96-0ec5-4b41-9909-7e480dfafd22.jpeg" width="200px" />
-<img src="https://user-images.githubusercontent.com/102616606/218783735-7407a1e5-ed01-4d87-ae90-6c201d5801c9.jpeg" width="200px" />
+<img src="https://user-images.githubusercontent.com/102616606/218852167-a40f39be-5cb2-4b87-a16c-2dcfe0dc1e0b.jpeg" width="200px" />
+<img src="https://user-images.githubusercontent.com/102616606/218852453-603294a8-2902-4f67-be10-4403c6f1ded1.jpeg" width="200px" />
+<img src="https://user-images.githubusercontent.com/102616606/218852517-23fee259-43db-48c1-9411-38eeb6dfb637.jpeg" width="200px" />
+<img src="https://user-images.githubusercontent.com/102616606/218852586-e719488a-e6f5-43aa-8170-6e46a43a90c0.jpeg" width="200px" />
 </div>
 
 # Autor
