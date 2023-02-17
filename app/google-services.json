@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1098433118286:android:a55baba16f962d1572031f",
+        "mobilesdk_app_id": "1:1098433118286:android:b8b746550191aaff72031f",
         "android_client_info": {
-          "package_name": "com.marcos.moviesmr"
+          "package_name": "com.marcos.moviesmr.debug"
         }
       },
       "oauth_client": [
@@ -36,9 +36,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1098433118286:android:b8b746550191aaff72031f",
+        "mobilesdk_app_id": "1:1098433118286:android:97a90ec076ffbdc272031f",
         "android_client_info": {
-          "package_name": "com.marcos.moviesmr.debug"
+          "package_name": "com.marcos.moviesmr.release"
         }
       },
       "oauth_client": [
