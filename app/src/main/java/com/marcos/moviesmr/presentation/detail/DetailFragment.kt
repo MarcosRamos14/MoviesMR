@@ -64,7 +64,7 @@ class DetailFragment : Fragment() {
         }
         binding.textDetailTitle.text = detailViewArgs.title
         binding.numberLikeDetail.text = detailViewArgs.likes.toString()
-        binding.popularityDetail.text = detailViewArgs.popularity.toString()
+        binding.numberPopularityDetail.text = detailViewArgs.popularity.toString()
     }
 
     private fun setupListener(detailViewArgs: DetailViewArgs) {
