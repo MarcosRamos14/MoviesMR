@@ -9,7 +9,7 @@ Essa aplicação não só permite favoritar diversos filmes, onde é exibido em 
 - Linguagem Kotlin
 - Integração com Firebase
 - Padrão MVVM + Clean Architecture
-- Jetpack Compose (Múltiplas Back Stack's)
+- Jetpack Navigation (Múltiplas Back Stack's)
 - DI (Dagger Hilt)
 - Retrofit + OkHttp + LogginInterceptor
 - Coroutines
@@ -31,7 +31,4 @@ Essa aplicação não só permite favoritar diversos filmes, onde é exibido em 
 <img src="https://user-images.githubusercontent.com/102616606/218852586-e719488a-e6f5-43aa-8170-6e46a43a90c0.jpeg" width="200px" />
 </div>
 
-# Autor
-Marcos Moreira 
-
-LinkedIn https://www.linkedin.com/in/marcos-ramos-b11a72197/
+LinkedIn https://www.linkedin.com/in/marcos-m-ramos/
