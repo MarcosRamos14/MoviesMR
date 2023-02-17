@@ -78,11 +78,22 @@
                 android:textSize="@dimen/_12sp"
                 app:drawableStartCompat="@drawable/ic_like"
                 app:layout_constraintStart_toStartOf="@id/text_detail_title"
-                app:layout_constraintTop_toBottomOf="@id/text_detail_title"
-                tools:text="@string/app_like_movies" />
+                app:layout_constraintTop_toBottomOf="@id/text_detail_title" />
 
             <TextView
-                android:id="@+id/popularity_detail"
+                android:id="@+id/text_like"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_16dp"
+                android:text="@string/app_like_movies"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sp"
+                android:layout_marginHorizontal="@dimen/_8dp"
+                android:layout_marginVertical="@dimen/_8dp"
+                app:layout_constraintStart_toEndOf="@id/number_like_detail"
+                app:layout_constraintTop_toBottomOf="@id/text_detail_title"/>
+
+            <TextView
+                android:id="@+id/number_popularity_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_16dp"
                 android:layout_marginStart="@dimen/_16dp"
@@ -90,9 +101,20 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12sp"
                 app:drawableStartCompat="@drawable/ic_star"
-                app:layout_constraintStart_toEndOf="@id/number_like_detail"
-                app:layout_constraintTop_toTopOf="@id/number_like_detail"
-                tools:text="@string/app_popularity_movies" />
+                app:layout_constraintStart_toEndOf="@id/text_like"
+                app:layout_constraintTop_toTopOf="@id/number_like_detail" />
+
+            <TextView
+                android:id="@+id/text_popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_16dp"
+                android:text="@string/app_popularity_movies"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sp"
+                android:layout_marginHorizontal="@dimen/_8dp"
+                android:layout_marginVertical="@dimen/_8dp"
+                app:layout_constraintStart_toEndOf="@id/number_popularity_detail"
+                app:layout_constraintTop_toBottomOf="@id/text_detail_title"/>
 
             <ViewFlipper
                 android:id="@+id/flipper_favorite"
