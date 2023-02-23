@@ -1,6 +1,7 @@
 package com.marcos.moviesmr.framework.di
 
 import com.marcos.moviesmr.BuildConfig
+import com.marcos.moviesmr.framework.di.qualifier.BaseUrl
 import com.marcos.moviesmr.framework.network.MoviesApi
 import com.marcos.moviesmr.framework.network.interceptor.AuthorizationInterceptor
 import dagger.Module
@@ -58,10 +59,11 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(
         okHttpClient : OkHttpClient,
-        converterFactory : GsonConverterFactory
+        converterFactory : GsonConverterFactory,
+        @BaseUrl baseUrl : String
     ): MoviesApi {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()

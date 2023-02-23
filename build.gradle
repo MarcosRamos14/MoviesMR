@@ -7,7 +7,7 @@ buildscript {
     ext.material_version = "1.6.1"
     ext.design_version = "22.2.1"
     ext.hilt_version = '2.43.2'
-    ext.nav_version = '2.5.2'
+    ext.nav_version = '2.5.3'
     ext.glide_version = '4.12.0'
     ext.gson_version = "2.9.0"
     ext.retrofit_version = '2.9.0'
@@ -17,8 +17,13 @@ buildscript {
     ext.lifecycle_version = "2.5.1"
     ext.shimmer_version = "0.5.0"
     ext.junit_version = "4.13.2"
-    ext.extjunit_version = "1.1.4"
-    ext.espresso_version = "3.5.0"
+    ext.extjunit_version = "1.1.5"
+    ext.espresso_version = "3.4.0"
+    ext.fragmenttest_version = "1.4.0"
+    ext.mockweb_version = "4.10.0"
+    ext.testrunner_version = "1.4.0"
+    ext.orchestrator_version = "1.4.0"
+    ext.contrib_version = "3.1.0"
     ext.room_version = "2.4.1"
     ext.archTesting_version = "2.1.0"
     ext.mockito_version = "2.2.0"
