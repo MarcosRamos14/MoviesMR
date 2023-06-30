@@ -15,16 +15,20 @@ def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     namespace 'com.marcos.moviesmr'
     compileSdk 33
 
     signingConfigs {
         release {
-            storeFile file('C:\\Estudo mobile\\MR\\APPs\\MoviesMR\\store\\movies_mr_key_store.jks')
-            storePassword 'Marcos1303'
-            keyPassword 'Marcos1303'
-            keyAlias 'movies-mr'
+            storeFile file(keystoreProperties['STORE_FILE'])
+            storePassword keystoreProperties['STORE_PASSWORD']
+            keyPassword keystoreProperties['KEY_PASSWORD']
+            keyAlias keystoreProperties['KEY_ALIAS']
         }
     }
 

@@ -15,3 +15,5 @@
 .cxx
 local.properties
 /store
+apikey.properties
+keystore.properties
